@@ -65,7 +65,7 @@ theme2.typography.h5= {
                     {" "}
                     <Typography
                       variant="h5"
-                      className="text-[#495e61]    font-medium mt-2 max-w-lg mx-auto lowercase"
+                      className="text-[#495e61]    font-medium mt-2 max-w-lg mx-auto "
                     >
                       I am a front-end developer. I graduated from Tokat
                       Gaziosmanpaşa University Computer Engineering Department.

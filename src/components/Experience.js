@@ -26,7 +26,7 @@ const Experience = () => {
         <Grid container spacing={2}>
         {experienceData.map((option, index) => (
           <Grid item xs={12} md={3}>
-          <CardComp imageURL="../assets/img/react.png" title={option.title} title2={option.title2} title3={option.title3} />
+          <CardComp imageURL="../assets/img/react.png" title={option.title} title2={option.title2} title3={option.title3} title4={option.title4} />
           </Grid>
                ))}
           
