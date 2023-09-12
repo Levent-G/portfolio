@@ -121,12 +121,12 @@ export function DataContext({children})  {
       },
       {
         name: "JAVA",
-        value: "90",
+        value: "70",
       
       },
       {
         name: "C#",
-        value: "85",
+        value: "65",
       
       },
      

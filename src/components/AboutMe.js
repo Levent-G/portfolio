@@ -55,7 +55,7 @@ const AboutMe = () => {
               </Typography>
               <ul className="text-[#495e61] ">
                 <li>Name : Mustafa Levent Gülsüm</li>
-                <li className="mt-2">Age : 24 Years</li>
+                <li className="mt-2">Age : 23 Years</li>
                 <li className="mt-2">Phone : +05359230846</li>
                 <li className="mt-2">Email : levent_gulsum@outlook.com</li>
                 <li className="mt-2">Address : Ankara,Turkey</li>
