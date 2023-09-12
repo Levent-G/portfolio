@@ -18,7 +18,7 @@ import 'animate.css';
 
 const drawerWidth = 240;
 
-const navItems = ['ABOUT ME', 'SKILLS', 'EXPERIENCE','PORTFOLIO','EDUCATION','CONTACT'];
+const navItems = ['ABOUT ME', 'SKILLS', 'MY PROJECTS','PORTFOLIO','EDUCATION','CONTACT'];
 
 function TopBar(props) {
   const { window } = props;
