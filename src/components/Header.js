@@ -37,6 +37,7 @@ theme2.typography.h5= {
         backgroundImage: `url(${headerImg})`,
         background: "black",
         opacity: "0.8",
+        backgroundSize: "100% ",
       }}
       className=" d-flex align-items-center bg-no-repeat bg-bottom bg-cover w-full h-full bg-gradient-to-r  from-[#0B8692] to-[#223C5E] to-[#350033] to-transparent"
     >
