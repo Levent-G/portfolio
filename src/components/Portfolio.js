@@ -5,7 +5,9 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PortfolioCard from './PortfolioCard';
+import PorfolioCard2 from './PorfolioCard2';
 import { Container } from '@mui/material';
+import PortfolioCard3 from './PortfolioCard3';
 
 
 function CustomTabPanel(props) {
@@ -63,6 +65,7 @@ const Portfolio = () => {
               aria-label="basic tabs example"
               centered
               scrollButtons="auto"
+              className='w-full'
             >
               <Tab
                 label="Project 1"
@@ -93,13 +96,13 @@ const Portfolio = () => {
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
-            <PortfolioCard />
+            <PorfolioCard2 />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             <PortfolioCard />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
-            <PortfolioCard />
+            <PortfolioCard3 />
           </CustomTabPanel>
         </Box>
       </Container>

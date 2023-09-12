@@ -65,7 +65,7 @@ const ContactForm = () => {
               
                 />
 
-                  <button type="submit" variant="contained" className='text-[#398F60] ml-5'>
+                  <button type="submit" variant="contained" className='text-white bg-[#398F60] p-3 '>
                     SEND MESSAGE
                   </button>
                 </form>

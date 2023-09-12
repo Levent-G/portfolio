@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import  {CardActionArea}  from '@mui/material';
 import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
+
 
 const CardComp = (props) => {
     console.log(props.imageURL);
@@ -11,11 +11,7 @@ const CardComp = (props) => {
     <div>
          <Card className="mt-5" sx={{ boxShadow: 3 }}>
               <CardActionArea>
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image={props.imageURL}
-                  title="green iguana"
-                />
+              
                 <CardContent>
                   <Typography
                     gutterBottom
@@ -26,7 +22,7 @@ const CardComp = (props) => {
                     {props.title}
                   </Typography>
 
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2"  className="text-gray-400">
                   {props.title2}
                   </Typography>
                 </CardContent>

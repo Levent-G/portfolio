@@ -76,25 +76,46 @@ export function DataContext({children})  {
     
     },
     {
-        name: "JAVA",
-        value: "80",
+      name: "CSS",
+      value: "60",
+    
+    },
+    {
+      name: "JAVASCRIPT",
+      value: "60",
+    
+    },
+      {
+        name: "REACT.JS",
+        value: "95",
       
       },
       {
-        name: "REACT",
-        value: "100",
-      
-      },
-      {
-        name: "NEXT",
+        name: "NEXT.JS",
         value: "10",
       
       },
       {
-        name: "CSS",
-        value: "60",
+        name: "PHP",
+        value: "50",
       
       },
+      {
+        name: "LARAVEL",
+        value: "70",
+      
+      },
+      {
+        name: "JAVA",
+        value: "90",
+      
+      },
+      {
+        name: "C#",
+        value: "85",
+      
+      },
+     
   ];
 
   const portfolioData = [
