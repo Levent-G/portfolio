@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className='text-center text-[#495e61]'>
         <ArrowDropUpIcon style={{ fontSize: 50 }} className='relative bottom-6 bg-[#175f38] rounded-full text-white'/><br/>
-        Designed By MarkUps.io</div>
+        Designed By Mustafa Levent Gülsüm</div>
   )
 }
 
