@@ -86,22 +86,22 @@ export function DataContext({children})  {
   const skilssData = [
     {
       name: "HTML",
-      value: "50",
+      value: "90",
     
     },
     {
       name: "CSS",
-      value: "60",
+      value: "80",
     
     },
     {
       name: "JAVASCRIPT",
-      value: "60",
+      value: "75",
     
     },
       {
         name: "REACT.JS",
-        value: "95",
+        value: "85",
       
       },
       {
@@ -111,22 +111,22 @@ export function DataContext({children})  {
       },
       {
         name: "PHP",
-        value: "50",
+        value: "25",
       
       },
       {
         name: "LARAVEL",
-        value: "70",
+        value: "28",
       
       },
       {
         name: "JAVA",
-        value: "70",
+        value: "40",
       
       },
       {
         name: "C#",
-        value: "65",
+        value: "43",
       
       },
      
