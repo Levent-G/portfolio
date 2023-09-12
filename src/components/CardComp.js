@@ -9,7 +9,7 @@ const CardComp = (props) => {
     console.log(props.imageURL);
   return (
     <div>
-         <Card className="mt-5" sx={{ boxShadow: 3 }}>
+         <Card className="mt-5 px-5 pt-5 pb-2" sx={{ boxShadow: 3 }}>
               <CardActionArea>
               
                 <CardContent>
@@ -22,8 +22,12 @@ const CardComp = (props) => {
                     {props.title}
                   </Typography>
 
-                  <Typography variant="body2"  className="text-gray-400">
+                  <Typography variant="body2"  className="text-gray-400 float-left pt-5">
                   {props.title2}
+                  </Typography>
+
+                  <Typography variant="body2"  className="text-gray-400 float-right pt-5">
+                  {props.title3}
                   </Typography>
                 </CardContent>
               </CardActionArea>

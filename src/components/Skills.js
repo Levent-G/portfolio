@@ -44,6 +44,7 @@ const Skills = () => {
               <BorderLinearProgress
                 variant="determinate"
                 value={option.value}
+                
               />
             </div>
           ))}

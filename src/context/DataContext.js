@@ -29,42 +29,49 @@ export function DataContext({children})  {
       imageURL:{react},
       title: "Social Media",
       title2: "Detail",
+      title3:"React.js",
     
     },
     {
       imageURL:{react},
       title: "Chat",
       title2: "Detail",
+      title3:"React.js",
     
     },
     {
       imageURL:{react},
       title: "NotePad",
       title2: "Detail",
+      title3:"React.js",
     
     },
     {
       imageURL:{react},
       title: "gibteknoloji" ,
       title2: "Detail",
+      title3:"React.js",
     
     },
     {
       imageURL:{react},
       title: "todoapp" ,
       title2: "Detail",
+      title3:"React.js",
     
     },
     {
       imageURL:{react},
       title: "cart application" ,
       title2: "Detail",
+      title3:"React.js",
     
     }, 
     {
       imageURL:{react},
       title: "stock tracking" ,
       title2: "Detail",
+      title3:"React.js",
     
     }, 
   ];
