@@ -31,8 +31,8 @@ const AboutMe = () => {
             <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' ${isVisible ? 'animate__fadeInLeft'  : ''}`}>
               <img src={aboutme} alt="" className=' p-12'  />
             </Grid>
-            <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' ${isVisible ? 'animate__fadeInRight'  : ''}`}>
-            <div className='ml-12'>
+            <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' 'ml-12' ${isVisible ? 'animate__fadeInRight'  : ''}`}>
+       
             <Typography
                 variant="h4"
                 className="text-[#297580]   font-bold leading-[3rem] max-w-lg mx-auto pt-12 pb-5"
@@ -63,7 +63,7 @@ const AboutMe = () => {
               <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white   hover:underline ">
                 Show CV
               </button>
-            </div>
+          
              
             </Grid>
           </Grid>
