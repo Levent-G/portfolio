@@ -3,6 +3,8 @@ import {  Container, Typography } from '@mui/material'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { styled } from '@mui/material/styles';
 import { useData } from "../context/DataContext";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 const Skills = () => {
   
   const {skilssData} = useData();
@@ -36,18 +38,25 @@ const Skills = () => {
         <br />
 
         <div className="mt-12">
+        <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
           {skilssData.map((option, index) => (
-            <div className="mt-5 mb-7">
-              <Typography variant="h7" className="text-white ">
-                {option.name}
-              </Typography>
-              <BorderLinearProgress
-                variant="determinate"
-                value={option.value}
-                
-              />
-            </div>
+        
+                <Grid item xs={12} md={4}>
+                  <div className="mt-5 mb-7">
+                    <Typography variant="h7" className="text-white ">
+                      {option.name}
+                    </Typography>
+                    <BorderLinearProgress
+                      variant="determinate"
+                      value={option.value}
+                    />
+                  </div>
+                </Grid>
+          
           ))}
+              </Grid>
+            </Box>
         </div>
       </Container>
     </div>

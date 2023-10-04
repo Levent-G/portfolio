@@ -1,9 +1,12 @@
 import React, { useContext ,createContext} from 'react';
 import react from "../assets/img/react.png"
-import html from "../assets/img/html.png"
-import next from "../assets/img/next.jpg"
-import java from "../assets/img/java.jpg"
-import aboutme from "../assets/img/aboutme.png"
+import todoapp from '../assets/img/todoapp.PNG';
+import notpad from '../assets/img/notpad.PNG';
+import chat from '../assets/img/chat.PNG';
+import stock from '../assets/img/stock.PNG';
+import sepet from '../assets/img/sepet.PNG';
+import gibteknoloji from '../assets/img/gibteknoloji.PNG';
+import sosyalmedya from '../assets/img/sosyalmedya.PNG';
 const Context = createContext();
 export function DataContext({children})  {
  
@@ -83,6 +86,42 @@ export function DataContext({children})  {
     }, 
   ];
 
+  const portfolioData = [
+    {
+      img: gibteknoloji,
+      title: 'I converted the design of https://teknoloji.gib.gov.tr/teknoloji/ to react.js without changing it.',
+     
+    },
+    {
+      img: sosyalmedya,
+      title: 'It is a project that covers all the features of known social media projects.',
+    },
+    {
+      img: todoapp,
+      title: 'It is a Todo app application. Listing, adding and subtracting is an application.',
+    },
+    {
+      img: notpad,
+      title: 'It is an application with user input and output where you can add and delete notes.',
+      
+    },
+    {
+      img: chat,
+      title: 'It is a chat application made using Firebase that allows chatting and has user login and logout.',
+     
+    },
+    {
+      img: stock,
+      title: 'It is a stock tracking application',
+   
+    },
+    {
+      img: sepet,
+      title: 'It is an application with user login and logout, where products are listed and we can add products to the cart.',
+    },
+  
+  ];
+
   const skilssData = [
     {
       name: "HTML",
@@ -132,35 +171,7 @@ export function DataContext({children})  {
      
   ];
 
-  const portfolioData = [
-    {
-        name:"react.png",
-        value: "20",
-      
-      },
-      {
-          name: {html},
-          value: "5",
-        
-        },
-        {
-          name: {next},
-          value: "25",
-        
-        },
-        {
-          name: {java},
-          value: "25",
-        
-        },
-      {
-        name: {aboutme},
-      
-      
-      },
-      
-      
-  ];
+  
   return (
     <Context.Provider value={{educationCardData ,experienceData,skilssData,portfolioData}}>
     {children}

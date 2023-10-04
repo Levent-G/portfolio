@@ -7,6 +7,7 @@ import Education from '../components/Education'
 import Portfolio from '../components/Portfolio'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import PortfolioCardList from '../components/PortfolioCardList'
 const Homepage = () => {
   return (
     <div>
@@ -14,7 +15,7 @@ const Homepage = () => {
       <AboutMe/>
       <Skills/>
       <Experience/>
-      <Portfolio/>
+      <PortfolioCardList/>
       <Education/>
       <Contact/>
       <Footer/>

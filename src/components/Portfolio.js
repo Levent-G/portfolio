@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PortfolioCard from './PortfolioCard';
-import PorfolioCard2 from './PorfolioCard2';
+import PortfolioCardList from './PortfolioCardList';
 import { Container } from '@mui/material';
 import PortfolioCard3 from './PortfolioCard3';
 
@@ -96,7 +96,7 @@ const Portfolio = () => {
             </Tabs>
           </Box>
           <CustomTabPanel value={value} index={0}>
-            <PorfolioCard2 />
+            <PortfolioCardList />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             <PortfolioCard />
