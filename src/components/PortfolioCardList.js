@@ -17,13 +17,13 @@ const { portfolioData } = useData();
     width:500
   };
   return (
-    <div className="mt-12 p-12 bg-[#398F60]">
+    <div className="mt-12 p-5 bg-[#398F60]">
       <Container>
         <Box sx={{ width: "100%" }}>
-          <Box >
+     
             <Typography
               variant="h4"
-              className="text-white  font-bold leading-[3rem] max-w-lg mx-auto pt-12 pb-5"
+              className="text-white  font-bold leading-[3rem] max-w-lg mx-auto pt-6 pb-5"
             >
               PORTFOLIO
             </Typography>
@@ -39,7 +39,7 @@ const { portfolioData } = useData();
                 </div>
               ))}
             </Slider>
-          </Box>
+        
         </Box>
       </Container>
     </div>
