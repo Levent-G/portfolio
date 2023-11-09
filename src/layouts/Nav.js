@@ -35,7 +35,10 @@ function TopBar(props) {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
+            <Link to={item === 'BLOG' ? '/blog' :item === 'HOMEPAGE' ? '/': `/${item.toLowerCase()}`} key={item}>
+
               <ListItemText primary={item}  />
+              </Link>
             </ListItemButton>
           </ListItem>
         ))}
