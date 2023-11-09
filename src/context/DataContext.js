@@ -27,7 +27,7 @@ export function DataContext({children})  {
       
       },
   ];
-  const experienceData = [
+  const myProjectData = [
     {
       imageURL:{react},
       title: "Social Media",
@@ -125,47 +125,47 @@ export function DataContext({children})  {
   const skilssData = [
     {
       name: "HTML",
-      value: "90",
+      value: 90,
     
     },
     {
       name: "CSS",
-      value: "80",
+      value: 80,
     
     },
     {
       name: "JAVASCRIPT",
-      value: "75",
+      value: 75,
     
     },
       {
         name: "REACT.JS",
-        value: "85",
+        value: 85,
       
       },
       {
         name: "NEXT.JS",
-        value: "10",
+        value: 10,
       
       },
       {
         name: "PHP",
-        value: "25",
+        value: 25,
       
       },
       {
         name: "LARAVEL",
-        value: "28",
+        value: 28,
       
       },
       {
         name: "JAVA",
-        value: "40",
+        value: 40,
       
       },
       {
         name: "C#",
-        value: "43",
+        value: 43,
       
       },
      
@@ -179,7 +179,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik1",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"2.5",
+      starts:2.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -203,7 +203,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik2",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"1.5",
+      starts:1.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -227,7 +227,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik3",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"3.5",
+      starts:3.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -251,7 +251,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik4",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"4.5",
+      starts:4.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -275,7 +275,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik5",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"5.5",
+      starts:5.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -299,7 +299,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik6",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"6.5",
+      starts:6.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -323,7 +323,7 @@ export function DataContext({children})  {
       blogBaslik: "Blog baslik",
       yazarName: " Levent ",
       blogTarihi:"16.10.2023",
-      starts:"7.5",
+      starts:7.5,
       blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
@@ -355,9 +355,10 @@ export function DataContext({children})  {
 ];
 
 
+
   
   return (
-    <Context.Provider value={{educationCardData ,experienceData,skilssData,portfolioData,blogData,categories}}>
+    <Context.Provider value={{educationCardData ,myProjectData,skilssData,portfolioData,blogData,categories}}>
     {children}
   </Context.Provider>
   );

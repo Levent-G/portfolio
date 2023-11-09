@@ -30,7 +30,7 @@ const { portfolioData } = useData();
 
             <Slider {...settings}>
               {portfolioData.map((item, index) => (
-                <div className="portfolio relative text-center">
+                <div className="portfolio relative text-center" key={index}>
                   <div key={index} className="project">
                  
                     <img src={item.img} alt={item.title} />

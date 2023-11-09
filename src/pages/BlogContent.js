@@ -14,59 +14,66 @@ const BlogContent = () => {
 
   const {blogData} = useData();
   const selectedItem = blogData.find(item => item.id === blogId);
-  console.log(blogId);
+
   return (
     <div className="mt-24 bg-gray-100">
-    
-         {selectedItem && (
-        <Box  className='p-5'>
-        <Container>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8} >
-            <Typography variant="h2" className="mb-2 font-bold">
-            {selectedItem.blogBaslik}
-          </Typography>
+      <Typography
+        gutterBottom
+        variant="h3"
+        component="div"
+        className="text-white text-center bg-[#398F60] p-3 "
+      >
+        The website is currently being developed.
+      </Typography>
+      {selectedItem && (
+        <Box className="p-5">
+          <Container>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={8}>
+                <Typography variant="h2" className="mb-2 font-bold">
+                  {selectedItem.blogBaslik}
+                </Typography>
 
-          <div className="mt-2">
-            <Avatar
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-              className="float-left mr-2"
-              sx={{ width: 30, height: 30 }}
-            />
-            <Typography variant="h7" className="mb-2 text-gray-400 ">
-              {" "}
-             {selectedItem.yazarName}, {selectedItem.blogTarihi}
-            </Typography>
-            <SettingsOutlinedIcon className="float-right" />
-          </div>
+                <div className="mt-2">
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="/static/images/avatar/1.jpg"
+                    className="float-left mr-2"
+                    sx={{ width: 30, height: 30 }}
+                  />
+                  <Typography variant="h7" className="mb-2 text-gray-400 ">
+                    {" "}
+                    {selectedItem.yazarName}, {selectedItem.blogTarihi}
+                  </Typography>
+                  <SettingsOutlinedIcon className="float-right" />
+                </div>
 
-          <Rating name="half-rating" defaultValue={selectedItem.starts} precision={0.5} />
-          <div className="mt-12">
-            <Typography
-              variant="body1"
-              className="mb-4 text-gray-600 "
-              style={customStyle}
-            >
-              {selectedItem.blogIcerik}
-            </Typography>  
-            </div>
+                <Rating
+                  name="half-rating"
+                  defaultValue={selectedItem.starts}
+                  precision={0.5}
+                />
+                <div className="mt-12">
+                  <Typography
+                    variant="body1"
+                    className="mb-4 text-gray-600 "
+                    style={customStyle}
+                  >
+                    {selectedItem.blogIcerik}
+                  </Typography>
+                </div>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <BlogAddComp />
+                <BlogCategory />
+              </Grid>
+              <Grid item xs={12} md={12}>
+                <BlogOneri />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4} >   
-            <BlogAddComp/>       
-            <BlogCategory/>                  
-            </Grid>
-            <Grid item xs={12} md={12} >   
-            <BlogOneri/>       
-                       
-            </Grid>
-         
-          </Grid>
-        </Container>
-      </Box>
-         
-         )}
-      
+          </Container>
+        </Box>
+      )}
     </div>
   );
 }

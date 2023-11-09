@@ -5,7 +5,7 @@ import { useData } from "../context/DataContext";
 
 const BlogOneri = () => {
     const {blogData} = useData();
-    console.log(blogData);
+   
   
   return (
     <div>
@@ -13,7 +13,7 @@ const BlogOneri = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
             {blogData.map((blog, index) => (
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={4} key={index}>
                 <Link to={`/blogcontent/${blog?.id}`} variant="body2">
                 <Card
                   className="mt-5  pt-5 "

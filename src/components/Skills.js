@@ -42,7 +42,7 @@ const Skills = () => {
               <Grid container spacing={2}>
           {skilssData.map((option, index) => (
         
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4}  key={index}>
                   <div className="mt-5 mb-7">
                     <Typography variant="h7" className="text-white ">
                       {option.name}

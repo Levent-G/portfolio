@@ -11,7 +11,7 @@ const ContactForm = () => {
          <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Card className="mt-5 p-5" sx={{ boxShadow: 3 }}>
+            <Card className="mt-5 p-5 bg-[#398F60]" sx={{ boxShadow: 3 }}>
               <CardActionArea>
               
                 <CardContent>
@@ -21,9 +21,9 @@ const ContactForm = () => {
                     margin="normal"
                     required
                     fullWidth
-                    id="text"
+                    id="name"
                     label="Name"
-                    name="text"
+                    name="name"
                     autoComplete="text"
                     
                 
@@ -33,9 +33,9 @@ const ContactForm = () => {
                   margin="normal"
                   required
                   fullWidth
-                  id="text"
+                  id="email"
                   label="Email"
-                  name="text"
+                  name="email"
                   autoComplete="text"
                   
               
@@ -45,9 +45,9 @@ const ContactForm = () => {
                   margin="normal"
                   required
                   fullWidth
-                  id="text"
+                  id="subject"
                   label="Subject"
-                  name="text"
+                  name="subject"
                   autoComplete="text"
                   
               
@@ -57,17 +57,18 @@ const ContactForm = () => {
                   margin="normal"
                   required
                   fullWidth
-                  id="text"
+                  id="message"
                   label="Message"
-                  name="text"
+                  name="message"
                   autoComplete="text"
+                
                  
               
                 />
-
-                  <button type="submit" variant="contained" className='text-white bg-[#398F60] p-3 '>
+        
+                  <p   variant="contained" className='text-white bg-[#398F60] p-3  '>
                     SEND MESSAGE
-                  </button>
+                  </p>
                 </form>
                 </CardContent>
               </CardActionArea>

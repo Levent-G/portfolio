@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 
 
 const CardComp = (props) => {
-    console.log(props.imageURL);
+
   return (
     <div>
          <Card className="mt-5 px-5 pt-5 pb-2" sx={{ boxShadow: 3,height:245 }}>

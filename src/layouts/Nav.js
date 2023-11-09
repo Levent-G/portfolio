@@ -43,12 +43,13 @@ function TopBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar component="nav" className={classNames('animate__animated', 'animate__fadeInDown')} style={{ backgroundColor:'#3CB371',  boxShadow: 'none',background: 'transparent linear-gradient(270deg, #3CB371 0%, #333333 62%, #333333 100%) 0% 0%'}}>
+      <AppBar component="nav" className={classNames('animate__animated', 'animate__fadeInDown')} style={{   boxShadow: 'none',background: 'transparent linear-gradient(270deg, #3CB371 0%, #333333 62%, #333333 100%) 0% 0%'}}>
 
   
         <Toolbar>
