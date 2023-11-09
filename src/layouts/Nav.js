@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
@@ -18,7 +18,7 @@ import 'animate.css';
 
 const drawerWidth = 240;
 
-const navItems = ['ABOUT ME', 'SKILLS', 'MY PROJECTS','PORTFOLIO','EDUCATION','CONTACT'];
+const navItems = ['HOMEPAGE','ABOUT ME', 'SKILLS', 'MY PROJECTS','PORTFOLIO','EDUCATION','CONTACT','BLOG'];
 
 function TopBar(props) {
   const { window } = props;
@@ -74,7 +74,9 @@ function TopBar(props) {
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <button key={item} >
-                <p className='text-white  text-xs  hover:bg-[#339961] hover:transition-delay-300 font-sans p-5 leading-4 font-medium'>{item}</p>
+                 <Link to={item === 'BLOG' ? '/blog' :item === 'HOMEPAGE' ? '/': `/${item.toLowerCase()}`} key={item}>
+                 <p className='text-white  text-xs  hover:bg-[#339961] hover:transition-delay-300 font-sans p-5 leading-4 font-medium'>{item}</p>
+                 </Link>
               </button>
             ))}
           </Box>
