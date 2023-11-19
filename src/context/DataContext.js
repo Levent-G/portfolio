@@ -175,184 +175,219 @@ export function DataContext({children})  {
 
   const blogData = [
     {
-      id:"1",    
+      id: "1",
       blogBaslik: "Blog baslik1",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:2.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      starts: 2.5,
+      category: "react",
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"2",  
+   
+    {
+      id: "2",
       blogBaslik: "Blog baslik2",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:1.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      category: "react",
+      starts: 1.5,
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"3",  
+   
+    {
+      id: "3",
       blogBaslik: "Blog baslik3",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:3.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      starts: 3.5,
+      category: "react",
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"4",  
+   
+    {
+      id: "4",
       blogBaslik: "Blog baslik4",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:4.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      category: "react",
+      starts: 4.5,
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"5",  
+  
+    {
+      id: "5",
       blogBaslik: "Blog baslik5",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:5.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      category: "react",
+      starts: 5.5,
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"6",  
+ 
+    {
+      id: "6",
       blogBaslik: "Blog baslik6",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:6.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      category: "javascript",
+      starts: 6.5,
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
-    {    
-      id:"7",  
+ 
+    {
+      id: "7",
       blogBaslik: "Blog baslik",
       yazarName: " Levent ",
-      blogTarihi:"16.10.2023",
-      starts:7.5,
-      blogIcerik:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " 
+      blogTarihi: "16.10.2023",
+      category: "javascript",
+      starts: 7.5,
+      blogIcerik:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum " +
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ",
     },
+   
   ];
   const categories = [
-    "React İle İlgili Bloglar",
-  "Next.js İle İlgili Bloglar",
-  "Java İle İlgili Bloglar",
-  "C# İle İlgili Bloglar",
-  "PHP İle İlgili Bloglar",
-  "Laravel İle İlgili Bloglar",
-  "React Hataları Bloglar",
+    {
+      name:  "Blog baslik1",  
+    },
+    {
+      name:  "Blog baslik2", 
+    },
+    {
+      name:  "Blog baslik3", 
+    },
+    {
+      name:  "Blog baslik4", 
+    },
+    {
+      name:  "Blog baslik5", 
+    },
+    {
+      name:  "Blog baslik6", 
+    },
+    {
+      name:  "Blog baslik", 
+    },
 
-];
+  ];
 
 
 

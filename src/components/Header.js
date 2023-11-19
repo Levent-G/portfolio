@@ -6,6 +6,7 @@ import heroImg from "../assets/img/heroImg.png";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import 'animate.css';
 const Header = () => {
   const theme = createTheme();
@@ -73,9 +74,12 @@ theme2.typography.h5= {
                       I am doing freelance work....
                     </Typography>{" "}
                   </ThemeProvider>
+                  <Link to={'/pdf'} >
+
                   <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
                   Show CV 
                   </button>
+                  </Link>
                 </Grid>
                 <Grid item xs={8} md={4} className={classNames('animate__animated', 'animate__fadeInRight')}>
                   <img src={heroImg} alt="" className="mt-5 ml-12" />

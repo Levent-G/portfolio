@@ -14,7 +14,7 @@ const BlogOneri = () => {
           <Grid container spacing={2}>
             {blogData.map((blog, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <Link to={`/blogcontent/${blog?.id}`} variant="body2">
+                <Link to={`/blogcontent/${blog?.blogBaslik}`} variant="body2">
                 <Card
                   className="mt-5  pt-5 "
                   sx={{ boxShadow: 3, height: 145 }}

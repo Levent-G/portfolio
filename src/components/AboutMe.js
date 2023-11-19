@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import aboutme from "../assets/img/aboutme.png"
-
+import { Link } from 'react-router-dom';
 import 'animate.css';
 import {Container,Typography } from '@mui/material'
 const AboutMe = () => {
@@ -60,9 +60,12 @@ const AboutMe = () => {
                 <li className="mt-2">Email : levent_gulsum@outlook.com</li>
                 <li className="mt-2">Address : Ankara,Turkey</li>
               </ul>
-              <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white   hover:underline ">
-                Show CV
-              </button>
+              <Link to={'/pdf'} >
+
+<button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
+Show CV 
+</button>
+</Link>
           
              
             </Grid>
