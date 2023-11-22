@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import aboutme from "../assets/img/aboutme.png"
+import header1 from "../assets/img/header1.jpg"
 import { Link } from 'react-router-dom';
 import 'animate.css';
 import {Container,Typography } from '@mui/material'
@@ -29,7 +29,7 @@ const AboutMe = () => {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2} >
             <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' ${isVisible ? 'animate__fadeInLeft'  : ''}`}>
-              <img src={aboutme} alt="" className=' p-12'  />
+              <img src={header1} alt="" className=' p-12'  />
             </Grid>
             <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' 'ml-12' ${isVisible ? 'animate__fadeInRight'  : ''}`}>
        

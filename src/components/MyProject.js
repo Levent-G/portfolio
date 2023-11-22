@@ -5,8 +5,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CardComp from "./CardComp"
 import { useData } from "../context/DataContext";
+
 const MyProject = () => {
   const {myProjectData} = useData();
+
   return (
     <div>
       <Container>
@@ -25,8 +27,8 @@ const MyProject = () => {
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
         {myProjectData.map((option, index) => (
-          <Grid item xs={12} md={3} key={index}>
-          <CardComp imageURL="../assets/img/react.png" title={option.title} title2={option.title2} title3={option.title3} title4={option.title4} />
+          <Grid item xs={12} md={4} key={index}>
+          <CardComp  title={option.title} title2={option.title2} title3={option.title3} title4={option.title4} />
           </Grid>
                ))}
           

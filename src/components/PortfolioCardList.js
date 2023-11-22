@@ -17,13 +17,13 @@ const { portfolioData } = useData();
     width:500
   };
   return (
-    <div className="mt-12 p-5 bg-[#398F60]">
+    <div className="mt-12 p-5 ">
       <Container>
         <Box sx={{ width: "100%" }}>
      
             <Typography
               variant="h4"
-              className="text-white  font-bold leading-[3rem] max-w-lg mx-auto pt-6 pb-5"
+              className="text-[#297580]   font-bold leading-[3rem] max-w-lg mx-auto pt-6 pb-5"
             >
               PORTFOLIO
             </Typography>

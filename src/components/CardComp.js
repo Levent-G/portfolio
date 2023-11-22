@@ -1,15 +1,11 @@
 import React from 'react'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import  {CardActionArea}  from '@mui/material';
-import Typography from '@mui/material/Typography';
-
-
+import  {CardActionArea,CardContent,Card,Typography }  from '@mui/material';
 const CardComp = (props) => {
 
   return (
     <div>
-         <Card className="mt-5 px-5 pt-5 pb-2" sx={{ boxShadow: 3,height:245 }}>
+         <Card className="mt-5 px-5 pt-5 pb-2" sx={{ boxShadow: 3,height:250 }}>
+   
               <CardActionArea>
               
                 <CardContent>
@@ -34,6 +30,7 @@ const CardComp = (props) => {
                   {props.title3}
                   </Typography>
                 </CardContent>
+                
               </CardActionArea>
             </Card>
     </div>

@@ -9,18 +9,24 @@ const ExperienceCard = () => {
   return (
     <div>
       <Container>
-      <Card
-          className="mt-5 text-center p-5 bg-[#297580]"
-          sx={{ boxShadow: 3, maxWidth: 345, maxHeight: 300,backgroundColor:"#398F60" }}
+        <Typography
+          variant="h4"
+          className="text-white font-bold leading-[3rem] max-w-lg mx-auto   pb-5"
+        >
+          EXPERIENCE
+        </Typography>
+        <Card
+          className="mt-5 text-center p-5 "
+          sx={{ boxShadow: 3, maxWidth: 345, height: 250 }}
         >
           <CardActionArea>
-            <WebIcon style={{ fontSize: 50 }} className="text-white" />
+            <WebIcon style={{ fontSize: 50 }} className="text-[#495e61]" />
             <CardContent>
               <Typography
                 gutterBottom
                 variant="h6"
                 component="div"
-                className="text-white"
+                className="text-[#0c8390]"
               >
                 Gelir Idaresi Baskanligi
               </Typography>
@@ -28,7 +34,7 @@ const ExperienceCard = () => {
                 gutterBottom
                 variant="h7"
                 component="div"
-                className="text-white"
+                className="text-[#0c8390]"
               >
                 3 month
               </Typography>

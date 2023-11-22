@@ -2,7 +2,7 @@ import React from 'react'
 import headerImg from "../assets/img/headerImg.png"
 import { Container, Typography } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import heroImg from "../assets/img/heroImg.png";
+import header3 from "../assets/img/header3.png";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import classNames from 'classnames';
@@ -11,6 +11,7 @@ import 'animate.css';
 const Header = () => {
   const theme = createTheme();
   const theme2 = createTheme();
+  const theme3 = createTheme();
 theme.typography.h3= {
   
   '@media (min-width:200px)': {
@@ -29,6 +30,12 @@ theme2.typography.h5= {
   },
   [theme2.breakpoints.up('md')]: {
     fontSize: '20px',
+  },
+};
+theme3.typography.h5 = {
+  display: 'block', // Varsayılan olarak görünür olsun
+  '@media (max-width: 767px)': {
+    display: 'none', // Ekran genişliği 767 pikselden küçükse resmi gizle
   },
 };
 
@@ -50,7 +57,7 @@ theme2.typography.h5= {
           >
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={8} className={classNames('animate__animated', 'animate__fadeInLeft')}>
+                <Grid item xs={12} md={6} className={classNames('animate__animated', 'animate__fadeInLeft')}>
                   <ThemeProvider theme={theme}>
                     <Typography
                       variant="h3"
@@ -81,8 +88,14 @@ theme2.typography.h5= {
                   </button>
                   </Link>
                 </Grid>
-                <Grid item xs={8} md={4} className={classNames('animate__animated', 'animate__fadeInRight')}>
-                  <img src={heroImg} alt="" className="mt-5 ml-12" />
+                <Grid item xs={8} md={6} className={classNames('animate__animated', 'animate__fadeInRight')}>
+                <ThemeProvider theme={theme3}>
+<Typography variant="h5">
+<img src={header3} alt="" className="ml-12" />
+</Typography>
+              
+                </ThemeProvider>
+               
                 </Grid>
               </Grid>
             </Box>

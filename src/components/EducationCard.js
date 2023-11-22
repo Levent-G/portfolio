@@ -11,9 +11,15 @@ const EducationCard = () => {
   return (
     <div>
       <Container>
+        <Typography
+          variant="h4"
+          className="text-white font-bold leading-[3rem] max-w-lg mx-auto  pb-5"
+        >
+          EDUCATION
+        </Typography>
         <Card
           className="mt-5 text-center p-5 "
-          sx={{ boxShadow: 3, maxWidth: 345, maxHeight: 300}}
+          sx={{ boxShadow: 3, maxWidth: 345, height: 250 }}
         >
           <CardActionArea>
             <MenuBookIcon style={{ fontSize: 50 }} className="text-[#495e61]" />
@@ -34,7 +40,6 @@ const EducationCard = () => {
               >
                 4 year
               </Typography>
-         
             </CardContent>
           </CardActionArea>
         </Card>
