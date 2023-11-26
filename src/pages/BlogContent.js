@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import { Typography,Avatar,Rating, Box, Container, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useData } from "../context/DataContext";
@@ -9,6 +9,10 @@ const BlogContent = () => {
 
   const { blogBaslik } = useParams();
   const {categories} = useData();
+  useEffect(() => {
+    // Kategori değiştiğinde burada sayfanın en üstüne gitme işlemini yapabilirsiniz.
+    window.scrollTo(0, 0);
+  }, [blogBaslik]);
 
   const {blogData} = useData();
   const selectedItem = blogData.filter(item => item.blogBaslik === blogBaslik);
