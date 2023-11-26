@@ -17,8 +17,6 @@ const BlogContent = () => {
 
   return (
     <div className="mt-24 bg-gray-100">
-    
-
       <Box className="p-5">
         <Container>
           <Grid container spacing={1}>
@@ -48,9 +46,7 @@ const BlogContent = () => {
                     precision={0.5}
                   />
                   <div className="mt-6">
-                   
-                      <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
-                   
+                    <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
                   </div>
                 </>
               ))}
