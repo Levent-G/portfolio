@@ -1,10 +1,10 @@
 import React from "react";
 import { Typography,Avatar,Rating, Box, Container, Grid } from "@mui/material";
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { useParams } from "react-router-dom";
 import { useData } from "../context/DataContext";
 import BlogCategory from '../components/BlogCategory';
-import BlogOneri from "../components/BlogOneri";
+import ReactMarkdown from 'react-markdown';
+
 const BlogContent = () => {
   const customStyle = {
     fontFamily: 'Times New Roman', // Times New Roman yazı tipi
@@ -17,14 +17,7 @@ const BlogContent = () => {
 
   return (
     <div className="mt-24 bg-gray-100">
-      <Typography
-        gutterBottom
-        variant="h3"
-        component="div"
-        className="text-white text-center bg-[#398F60] p-3 "
-      >
-        The website is currently being developed.
-      </Typography>
+    
 
       <Box className="p-5">
         <Container>
@@ -47,7 +40,6 @@ const BlogContent = () => {
                       {" "}
                       {item.yazarName}, {item.blogTarihi}
                     </Typography>
-                    <SettingsOutlinedIcon className="float-right" />
                   </div>
 
                   <Rating
@@ -55,14 +47,10 @@ const BlogContent = () => {
                     defaultValue={item.starts}
                     precision={0.5}
                   />
-                  <div className="mt-12">
-                    <Typography
-                      variant="body1"
-                      className="mb-4 text-gray-600 "
-                      style={customStyle}
-                    >
-                      {item.blogIcerik}
-                    </Typography>
+                  <div className="mt-6">
+                   
+                      <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
+                   
                   </div>
                 </>
               ))}
@@ -70,9 +58,6 @@ const BlogContent = () => {
 
             <Grid item xs={12} md={4}>
               <BlogCategory categories={categories} />
-            </Grid>
-            <Grid item xs={12} md={12}>
-              <BlogOneri blogData={blogData} />
             </Grid>
           </Grid>
         </Container>

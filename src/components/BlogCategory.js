@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 const BlogCategory = (categories) => {
+
   return (
     <div className="max-w-lg mx-auto   px-5 ml-5 rounded shadow border-4 border-gray-200 p-5">
       <h2 className="text-xl mb-4 font-bold text-[#339961]">Kategoriler</h2>
