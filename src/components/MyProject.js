@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import CardComp from "./CardComp"
-import { useData } from "../context/DataContext";
 
-const MyProject = () => {
-  const {myProjectData} = useData();
+
+const MyProject = (myProjectData) => {
+
 
   return (
     <div>
@@ -25,15 +25,19 @@ const MyProject = () => {
         </Typography>
 
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-        {myProjectData.map((option, index) => (
-          <Grid item xs={12} md={4} key={index}>
-          <CardComp  title={option.title} title2={option.title2} title3={option.title3} title4={option.title4} />
+          <Grid container spacing={2}>
+            {myProjectData.myProjectData.map((option, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <CardComp
+                  title={option.title}
+                  title2={option.title2}
+                  title3={option.title3}
+                  title4={option.title4}
+                />
+              </Grid>
+            ))}
           </Grid>
-               ))}
-          
-        </Grid>
-      </Box>
+        </Box>
       </Container>
     </div>
   );

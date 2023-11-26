@@ -2,8 +2,11 @@ import React from 'react'
 import { Box, Container, Grid,Typography } from "@mui/material";
 import BlogCategory from '../components/BlogCategory';
 import BlogOneri from '../components/BlogOneri';
-import BlogAddComp from '../components/BlogAddComp';
+import { useData } from "../context/DataContext";
 const Blog = () => {
+
+  const {blogData} = useData();
+  const {categories} = useData();
   return (
     <div className="mt-24 bg-gray-100">
       <Typography
@@ -18,11 +21,10 @@ const Blog = () => {
         <Container>
           <Grid container spacing={1}>
             <Grid item xs={12} md={8}>
-              <BlogOneri />
+              <BlogOneri blogData={blogData} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <BlogAddComp />
-              <BlogCategory />
+              <BlogCategory categories={categories} />
             </Grid>
           </Grid>
         </Container>

@@ -13,7 +13,6 @@ const Education = () => {
             <Grid item xs={12} md={6}>
               <EducationCard />
             </Grid>
-            
             <Grid item xs={12} md={6}>
               <ExperienceCard />
             </Grid>

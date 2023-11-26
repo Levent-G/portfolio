@@ -12,9 +12,7 @@ const Contact = () => {
         >
           CONTACT
         </Typography>
-      
-        <ContactForm/>
-        
+        <ContactForm />
       </Container>
     </div>
   );

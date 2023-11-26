@@ -26,16 +26,19 @@ const Footer = () => {
     });
   };
   return (
-    <div className='text-center text-[#495e61]'>
-       {showButton && (
+    <div className="text-center text-[#495e61]">
+      {showButton && (
         <button onClick={scrollToTop}>
-         <ArrowDropUpIcon style={{ fontSize: 50 }} className='relative bottom-6 bg-[#175f38] rounded-full text-white'/><br/>
-        Designed By Mustafa Levent Gülsüm
+          <ArrowDropUpIcon
+            style={{ fontSize: 50 }}
+            className="relative bottom-6 bg-[#175f38] rounded-full text-white"
+          />
+          <br />
+          Designed By Mustafa Levent Gülsüm
         </button>
-       
-        )}
-        </div>
-  )
+      )}
+    </div>
+  );
 }
 
 export default Footer

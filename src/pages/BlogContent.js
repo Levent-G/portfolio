@@ -4,13 +4,13 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { useParams } from "react-router-dom";
 import { useData } from "../context/DataContext";
 import BlogCategory from '../components/BlogCategory';
-import BlogAddComp from '../components/BlogAddComp';
 import BlogOneri from "../components/BlogOneri";
 const BlogContent = () => {
   const customStyle = {
     fontFamily: 'Times New Roman', // Times New Roman yazı tipi
   };
   const { blogBaslik } = useParams();
+  const {categories} = useData();
 
   const {blogData} = useData();
   const selectedItem = blogData.filter(item => item.blogBaslik === blogBaslik);
@@ -69,11 +69,10 @@ const BlogContent = () => {
             </Grid>
 
             <Grid item xs={12} md={4}>
-              <BlogAddComp />
-              <BlogCategory />
+              <BlogCategory categories={categories} />
             </Grid>
             <Grid item xs={12} md={12}>
-              <BlogOneri />
+              <BlogOneri blogData={blogData} />
             </Grid>
           </Grid>
         </Container>

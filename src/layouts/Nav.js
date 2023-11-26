@@ -29,15 +29,22 @@ function TopBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-  
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-            <Link to={item === 'BLOG' ? '/blog' :item === 'HOMEPAGE' ? '/': `/${item.toLowerCase()}`} key={item}>
-
-              <ListItemText primary={item}  />
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <Link
+                to={
+                  item === "BLOG"
+                    ? "/blog"
+                    : item === "HOMEPAGE"
+                    ? "/"
+                    : `/${item.toLowerCase()}`
+                }
+                key={item}
+              >
+                <ListItemText primary={item} />
               </Link>
             </ListItemButton>
           </ListItem>
@@ -50,37 +57,51 @@ function TopBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }} >
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav" className={classNames('animate__animated', 'animate__fadeInDown')} style={{   boxShadow: 'none',background: 'transparent linear-gradient(270deg, #3CB371 0%, #333333 62%, #333333 100%) 0% 0%'}}>
-
-  
+      <AppBar
+        component="nav"
+        className={classNames("animate__animated", "animate__fadeInDown")}
+        style={{
+          boxShadow: "none",
+          background:
+            "transparent linear-gradient(270deg, #3CB371 0%, #333333 62%, #333333 100%) 0% 0%",
+        }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{  display: { sm: 'none' } }}
+            sx={{ display: { sm: "none" } }}
           >
             <MenuIcon />
           </IconButton>
-        
+
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-             
-          </Typography>
-     
-         
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          ></Typography>
+
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <button key={item} >
-                 <Link to={item === 'BLOG' ? '/blog' :item === 'HOMEPAGE' ? '/': `/${item.toLowerCase()}`} key={item}>
-                 <p className='text-white  text-xs  hover:bg-[#339961] hover:transition-delay-300 font-sans p-5 leading-4 font-medium'>{item}</p>
-                 </Link>
+              <button key={item}>
+                <Link
+                  to={
+                    item === "BLOG"
+                      ? "/blog"
+                      : item === "HOMEPAGE"
+                      ? "/"
+                      : `/${item.toLowerCase()}`
+                  }
+                  key={item}
+                >
+                  <p className="text-white  text-xs  hover:bg-[#339961] hover:transition-delay-300 font-sans p-5 leading-4 font-medium">
+                    {item}
+                  </p>
+                </Link>
               </button>
             ))}
           </Box>
@@ -96,14 +117,16 @@ function TopBar(props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
           {drawer}
         </Drawer>
       </Box>
-    
     </Box>
   );
 }

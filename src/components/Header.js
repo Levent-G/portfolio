@@ -57,7 +57,15 @@ theme3.typography.h5 = {
           >
             <Box sx={{ flexGrow: 1 }}>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={6} className={classNames('animate__animated', 'animate__fadeInLeft')}>
+                <Grid
+                  item
+                  xs={12}
+                  md={6}
+                  className={classNames(
+                    "animate__animated",
+                    "animate__fadeInLeft"
+                  )}
+                >
                   <ThemeProvider theme={theme}>
                     <Typography
                       variant="h3"
@@ -81,21 +89,26 @@ theme3.typography.h5 = {
                       I am doing freelance work....
                     </Typography>{" "}
                   </ThemeProvider>
-                  <Link to={'/pdf'} >
-
-                  <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
-                  Show CV 
-                  </button>
+                  <Link to={"/pdf"}>
+                    <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
+                      Show CV
+                    </button>
                   </Link>
                 </Grid>
-                <Grid item xs={8} md={6} className={classNames('animate__animated', 'animate__fadeInRight')}>
-                <ThemeProvider theme={theme3}>
-<Typography variant="h5">
-<img src={header3} alt="" className="ml-12" />
-</Typography>
-              
-                </ThemeProvider>
-               
+                <Grid
+                  item
+                  xs={8}
+                  md={6}
+                  className={classNames(
+                    "animate__animated",
+                    "animate__fadeInRight"
+                  )}
+                >
+                  <ThemeProvider theme={theme3}>
+                    <Typography variant="h5">
+                      <img src={header3} alt="" className="ml-12" />
+                    </Typography>
+                  </ThemeProvider>
                 </Grid>
               </Grid>
             </Box>

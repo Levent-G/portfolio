@@ -27,13 +27,26 @@ const AboutMe = () => {
     <div className="md:p-20 p-5">
       <Container>
         <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={2} >
-            <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' ${isVisible ? 'animate__fadeInLeft'  : ''}`}>
-              <img src={header1} alt="" className=' p-12'  />
+          <Grid container spacing={2}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              className={`animate__animated 'animate__duration-2s' ${
+                isVisible ? "animate__fadeInLeft" : ""
+              }`}
+            >
+              <img src={header1} alt="" className=" p-12" />
             </Grid>
-            <Grid item xs={12} md={6}  className={`animate__animated 'animate__duration-2s' 'ml-12' ${isVisible ? 'animate__fadeInRight'  : ''}`}>
-       
-            <Typography
+            <Grid
+              item
+              xs={12}
+              md={6}
+              className={`animate__animated 'animate__duration-2s' 'ml-12' ${
+                isVisible ? "animate__fadeInRight" : ""
+              }`}
+            >
+              <Typography
                 variant="h4"
                 className="text-[#297580]   font-bold leading-[3rem] max-w-lg mx-auto pt-12 pb-5"
               >
@@ -60,14 +73,11 @@ const AboutMe = () => {
                 <li className="mt-2">Email : levent_gulsum@outlook.com</li>
                 <li className="mt-2">Address : Ankara,Turkey</li>
               </ul>
-              <Link to={'/pdf'} >
-
-<button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
-Show CV 
-</button>
-</Link>
-          
-             
+              <Link to={"/pdf"}>
+                <button className=" py-2 px-5  mt-5  bg-[#3CB371] text-sm font-semibold text-white  hover:text-[#3CB371] hover:bg-[#f8f8f8] hover:underline ">
+                  Show CV
+                </button>
+              </Link>
             </Grid>
           </Grid>
         </Box>
