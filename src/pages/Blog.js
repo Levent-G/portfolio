@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, Grid,Typography } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import BlogCategory from '../components/BlogCategory';
 
 import { useData } from "../context/DataContext";

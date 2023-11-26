@@ -6,9 +6,7 @@ import BlogCategory from '../components/BlogCategory';
 import ReactMarkdown from 'react-markdown';
 
 const BlogContent = () => {
-  const customStyle = {
-    fontFamily: 'Times New Roman', // Times New Roman yazı tipi
-  };
+
   const { blogBaslik } = useParams();
   const {categories} = useData();
 
