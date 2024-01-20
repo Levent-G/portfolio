@@ -3,8 +3,10 @@ import { Box, Container, Grid } from "@mui/material";
 import BlogCategory from '../components/BlogCategory';
 import LoadingPage from '../layouts/LoadingPage';
 import { useData } from "../context/DataContext";
+import BlogCardComp from '../components/BlogCardComp';
 const Blog = () => {
   const {categories} = useData();
+  const {blogData} = useData();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +28,9 @@ const Blog = () => {
       <Box className="p-5">
         <Container>
           <Grid container spacing={1}>
-          
+          <Grid item xs={12} md={8}>
+              <BlogCardComp blogData={blogData} />
+            </Grid>
             <Grid item xs={12} md={4}>
               <BlogCategory categories={categories} />
             </Grid>
