@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Grid } from "@mui/material";
 import BlogCategory from '../components/BlogCategory';
-
+import LoadingPage from '../layouts/LoadingPage';
 import { useData } from "../context/DataContext";
 const Blog = () => {
+  const {categories} = useData();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simüle edilmiş bir yükleme işlemi
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <LoadingPage />;
+  }
 
   
-  const {categories} = useData();
+
   return (
     <div className="mt-24 bg-gray-100">
   
