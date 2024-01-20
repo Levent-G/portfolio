@@ -43,7 +43,7 @@ const Skills = (skilssData) => {
                 <br />
               </Grid>
               <Grid item xs={12} md={6}>
-                <div>
+                <div className='h-72 overflow-y-scroll p-5'>
                   {skilssData.skilssData.map((option, index) => (
                     <div key={index} className="mt-5">
                       <Typography variant="h7" className="text-white mt-5">

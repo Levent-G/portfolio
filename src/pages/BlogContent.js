@@ -1,21 +1,30 @@
-import React, { useEffect } from 'react';
-import { Typography,Avatar,Rating, Box, Container, Grid } from "@mui/material";
+import React, { useEffect } from "react";
+import {
+  Typography,
+  Avatar,
+  Rating,
+  Box,
+  Container,
+  Grid,
+} from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useData } from "../context/DataContext";
-import BlogCategory from '../components/BlogCategory';
-import ReactMarkdown from 'react-markdown';
-
+import BlogCategory from "../components/BlogCategory";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 const BlogContent = () => {
-
   const { blogBaslik } = useParams();
-  const {categories} = useData();
+  const { categories } = useData();
   useEffect(() => {
     // Kategori değiştiğinde burada sayfanın en üstüne gitme işlemini yapabilirsiniz.
     window.scrollTo(0, 0);
   }, [blogBaslik]);
 
-  const {blogData} = useData();
-  const selectedItem = blogData.filter(item => item.blogBaslik === blogBaslik);
+  const { blogData } = useData();
+  const selectedItem = blogData.filter(
+    (item) => item.blogBaslik === blogBaslik
+  );
 
   return (
     <div className="mt-24 bg-gray-100">
@@ -44,11 +53,25 @@ const BlogContent = () => {
 
                   <Rating
                     name="half-rating"
-                    defaultValue={item.starts}
+                    value={item.starts}
                     precision={0.5}
                   />
-                  <div className="mt-6">
+                  <div className="mt-6 leading-10 text-xl p-5 bg-gray-200">
                     <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
+
+                    {item.codeExample !== undefined ? (
+                      <>
+                        <h1 className="mt-5">EXAMPLE</h1>
+                        <SyntaxHighlighter
+                          language="javascript"
+                          style={solarizedlight}
+                        >
+                          {item?.codeExample}
+                        </SyntaxHighlighter>
+                      </>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </>
               ))}
@@ -62,6 +85,6 @@ const BlogContent = () => {
       </Box>
     </div>
   );
-}
+};
 
-export default BlogContent
+export default BlogContent;

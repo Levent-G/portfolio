@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
@@ -6,6 +6,15 @@ import CardContent from '@mui/material/CardContent';
 import  {CardActionArea}  from '@mui/material';
 import TextField from "@mui/material/TextField";
 const ContactForm = () => {
+  const [email, setEmail] = useState('');
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const redirectToEmail = () => {
+    window.location.href = `mailto:${email}`;
+  };
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -15,45 +24,24 @@ const ContactForm = () => {
               <CardActionArea>
                 <CardContent>
                   <form>
+                  
                     <TextField
                       margin="normal"
-                      required
-                      fullWidth
-                      id="name"
-                      label="Name"
-                      name="name"
-                      autoComplete="text"
-                    />
-                    <TextField
-                      margin="normal"
-                      required
-                      fullWidth
+                      type="email"
                       id="email"
-                      label="Email"
                       name="email"
-                      autoComplete="text"
-                    />
-                    <TextField
-                      margin="normal"
+                      value={email}
+                      onChange={handleEmailChange}
                       required
-                      fullWidth
-                      id="subject"
                       label="Subject"
-                      name="subject"
-                      autoComplete="text"
-                    />
-                    <TextField
-                      margin="normal"
-                      required
+                      autoComplete="email"
                       fullWidth
-                      id="message"
-                      label="Message"
-                      name="message"
-                      autoComplete="text"
                     />
+                  
                     <p
                       variant="contained"
                       className="text-white bg-[#398F60] p-3  "
+                      onClick={redirectToEmail}
                     >
                       SEND MESSAGE
                     </p>
