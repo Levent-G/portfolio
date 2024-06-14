@@ -8,11 +8,12 @@ import {
   Grid,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useData } from "../context/DataContext";
-import BlogCategory from "../components/BlogCategory";
+import { useData } from "../../context/DataContext";
+
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import BlogCategory from "./BlogCategory";
 const BlogContent = () => {
   const { blogBaslik } = useParams();
   const { categories } = useData();

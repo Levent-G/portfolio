@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import header1 from "../assets/img/header1.jpg"
+import header1 from "../../../assets/img/header1.jpg"
 import { Link } from 'react-router-dom';
 import 'animate.css';
 import {Container,Typography } from '@mui/material'

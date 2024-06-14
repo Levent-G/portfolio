@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Container, Grid } from "@mui/material";
-import BlogCategory from '../components/BlogCategory';
-import LoadingPage from '../layouts/LoadingPage';
-import { useData } from "../context/DataContext";
-import BlogCardComp from '../components/BlogCardComp';
+import LoadingPage from '../../layouts/LoadingPage';
+import { useData } from "../../context/DataContext";
+import BlogCardComp from '../blog/BlogCardComp';
+import BlogCategory from './BlogCategory';
 const Blog = () => {
   const {categories} = useData();
   const {blogData} = useData();
