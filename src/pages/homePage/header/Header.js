@@ -1,8 +1,8 @@
 import React from 'react'
-import headerImg from "../assets/img/headerImg.png"
+import headerImg from "../../../assets/img/header3.png"
 import { Container, Typography } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import header3 from "../assets/img/header3.png";
+import header3 from "../../../assets/img/header3.png";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import classNames from 'classnames';

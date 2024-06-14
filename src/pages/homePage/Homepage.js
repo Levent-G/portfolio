@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/Header'
-import AboutMe from "../components/AboutMe"
-import Skills from '../components/Skills'
-import MyProject from '../components/MyProject'
-import Education from '../components/Education'
-import { useData } from '../context/DataContext';
-import Contact from '../components/Contact'
-import LoadingPage from '../layouts/LoadingPage';
+import Header from './header/Header'
+import AboutMe from "./aboutMe/AboutMe"
+import Skills from './skills/Skills'
+
+import { useData } from '../../context/DataContext';
+import LoadingPage from '../../layouts/LoadingPage';
+import MyProject from './myProject/MyProject';
+import Education from './education/Education';
+import Contact from './contact/Contact';
 
 const Homepage = () => {
   /* SKILLS DATA START */
