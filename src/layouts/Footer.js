@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { Box } from "@mui/material";
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
 
@@ -26,7 +27,7 @@ const Footer = () => {
     });
   };
   return (
-    <div className="text-center text-[#495e61]">
+    <Box sx={{color:"#495e61",textAlign:"center"}}>
       {showButton && (
         <button onClick={scrollToTop}>
           <ArrowDropUpIcon
@@ -37,7 +38,7 @@ const Footer = () => {
           Designed By Mustafa Levent Gülsüm
         </button>
       )}
-    </div>
+    </Box>
   );
 }
 

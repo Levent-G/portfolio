@@ -9,18 +9,24 @@ import {
 
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
-const BlogCardComp = (blogData) => {
-    const firstFiveBlogs = blogData.blogData.slice(0, 5);
+import CustomTypography from "../../components/typography/CustomTypography";
+import { blogData } from "./shared/BlogEnums";
+const BlogCardComp = () => {
+  const firstFiveBlogs = blogData.slice(0, 5);
   return (
     <div>
       {firstFiveBlogs.map((item, index) => (
         <>
-          <Link to={`/blogcontent/${item.blogBaslik}`} variant="body2">
+          <Link to={`/blogcontent/${item.blogBaslik}`} variant="body2" key={index}>
             <Card className="mt-5 hover:bg-gray-200 ">
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {item.blogBaslik}
-                </Typography>
+                <CustomTypography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  text={item.blogBaslik}
+                />
+
                 <Typography variant="body2" color="text.secondary">
                   <ReactMarkdown className="line-clamp-2">
                     {item.blogIcerik}
@@ -28,9 +34,11 @@ const BlogCardComp = (blogData) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Typography size="small" color="text.secondary">
-                  {item.yazarName}
-                </Typography>
+                <CustomTypography
+                  size="small"
+                  color="text.secondary"
+                  text={item.yazarName}
+                />
                 <Rating
                   name="half-rating"
                   value={item.starts}
