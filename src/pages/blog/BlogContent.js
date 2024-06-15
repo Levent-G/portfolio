@@ -1,90 +1,85 @@
 import React, { useEffect } from "react";
-import {
-  Typography,
-  Avatar,
-  Rating,
-  Box,
-  Container,
-  Grid,
-} from "@mui/material";
+import { Avatar, Rating, Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useData } from "../../context/DataContext";
 
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import BlogCategory from "./BlogCategory";
+import { blogData } from "./shared/BlogEnums";
+import CustomPaper from "../../components/paper/CustomPaper";
+import CustomTypography from "../../components/typography/CustomTypography";
 const BlogContent = () => {
   const { blogBaslik } = useParams();
-  const { categories } = useData();
+
   useEffect(() => {
-    // Kategori değiştiğinde burada sayfanın en üstüne gitme işlemini yapabilirsiniz.
     window.scrollTo(0, 0);
   }, [blogBaslik]);
 
-  const { blogData } = useData();
   const selectedItem = blogData.filter(
     (item) => item.blogBaslik === blogBaslik
   );
 
   return (
-    <div className="mt-24 bg-gray-100">
-      <Box className="p-5">
-        <Container>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={8}>
-              {selectedItem.map((item, index) => (
-                <>
-                  <Typography variant="h2" className="mb-2 font-bold">
-                    {item.blogBaslik}
-                  </Typography>
+    <CustomPaper padding="8rem">
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={8}>
+          {selectedItem.map((item, index) => (
+            <>
+              <CustomTypography variant="h4" mb={3} text={item.blogBaslik} />
 
-                  <div className="mt-2">
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/1.jpg"
-                      className="float-left mr-2"
-                      sx={{ width: 30, height: 30 }}
-                    />
-                    <Typography variant="h7" className="mb-2 text-gray-400 ">
-                      {" "}
-                      {item.yazarName}, {item.blogTarihi}
-                    </Typography>
-                  </div>
+              <Avatar
+                alt="Remy Sharp"
+                src="/static/images/avatar/1.jpg"
+                className="float-left mr-2"
+                sx={{ width: 30, height: 30 }}
+              />
+              <CustomTypography
+                variant="h7"
+                sx={{ color: "gray" }}
+                text={`${item.yazarName},${item.blogTarihi}`}
+              />
 
-                  <Rating
-                    name="half-rating"
-                    value={item.starts}
-                    precision={0.5}
-                  />
-                  <div className="mt-6 leading-10 text-xl p-5 bg-gray-200">
-                    <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
+              <Rating name="half-rating" value={item.starts} precision={0.5} />
+              <Box
+                sx={{
+                  px: 5,
+                  borderRadius: 1,
+                  boxShadow: 3,
+                  border: 4,
+                  borderColor: "grey.200",
+                  p: 5,
+                  mt: 3,
+                  lineHeight: "2.5rem",
+                  fontSize: "1.25rem",
+                  bgcolor: "grey.200",
+                }}
+              >
+                <ReactMarkdown>{item.blogIcerik}</ReactMarkdown>
 
-                    {item.codeExample !== undefined ? (
-                      <>
-                        <h1 className="mt-5">EXAMPLE</h1>
-                        <SyntaxHighlighter
-                          language="javascript"
-                          style={solarizedlight}
-                        >
-                          {item?.codeExample}
-                        </SyntaxHighlighter>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </>
-              ))}
-            </Grid>
+                {item.codeExample !== undefined ? (
+                  <>
+                    <CustomTypography variant="h7" text="EXAMPLE" />
+                    <SyntaxHighlighter
+                      language="javascript"
+                      style={solarizedlight}
+                    >
+                      {item?.codeExample}
+                    </SyntaxHighlighter>
+                  </>
+                ) : (
+                  ""
+                )}
+              </Box>
+            </>
+          ))}
+        </Grid>
 
-            <Grid item xs={12} md={4}>
-              <BlogCategory categories={categories} />
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-    </div>
+        <Grid item xs={12} md={4}>
+          <BlogCategory />
+        </Grid>
+      </Grid>
+    </CustomPaper>
   );
 };
 

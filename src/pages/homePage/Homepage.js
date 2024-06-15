@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Header from './header/Header'
-import AboutMe from "./aboutMe/AboutMe"
-import Skills from './skills/Skills'
+import React, { useState, useEffect } from "react";
+import Header from "./header/Header";
+import AboutMe from "./aboutMe/AboutMe";
+import Skills from "./skills/Skills";
 
-import { useData } from '../../context/DataContext';
-import LoadingPage from '../../layouts/LoadingPage';
-import MyProject from './myProject/MyProject';
-import Education from './education/Education';
-import Contact from './contact/Contact';
+import LoadingPage from "../../layouts/LoadingPage";
+import MyProject from "./myProject/MyProject";
+import Education from "./education/Education";
+import Contact from "./contact/Contact";
+import { Box } from "@mui/material";
 
 const Homepage = () => {
-  /* SKILLS DATA START */
-  const { skilssData } = useData();
-  /* SKILLS DATA END */
-  /* MYPROJECT DATA START */
-  const { myProjectData } = useData();
-  /* MYPROJECT DATA END */
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,17 +23,16 @@ const Homepage = () => {
     return <LoadingPage />;
   }
 
-
   return (
-    <div>
+    <Box>
       <Header />
       <AboutMe />
-      <Skills skilssData={skilssData} />
-      <MyProject myProjectData={myProjectData} />
+      <Skills />
+      <MyProject />
       <Education />
       <Contact />
-    </div>
+    </Box>
   );
-}
+};
 
-export default Homepage
+export default Homepage;
