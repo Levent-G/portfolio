@@ -6,7 +6,9 @@ import { Box } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import CustomTypography from "../../../components/typography/CustomTypography";
 import WebIcon from "@mui/icons-material/Web";
+import { useTheme } from "../../../context/ThemeContext";
 const EducationAndExperienceCard = ({ education, experience, job }) => {
+  const {theme} = useTheme();
   return (
     <Box>
       <Card
@@ -35,7 +37,7 @@ const EducationAndExperienceCard = ({ education, experience, job }) => {
             gutterBottom
             variant="h6"
             component="div"
-            sx={{ color: "#0c8390" }}
+            sx={{ color: theme.primaryColor }}
             mt={5}
             text={
               (education && "Tokat Gaziosmanpasa Universtiy") ||
@@ -48,7 +50,7 @@ const EducationAndExperienceCard = ({ education, experience, job }) => {
             gutterBottom
             variant="h7"
             component="div"
-            sx={{ color: "#0c8390" }}
+            sx={{ color: "#495e61" }}
             mt={3}
             text={
               (education && "4 year") ||

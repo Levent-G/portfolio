@@ -3,22 +3,29 @@ import React from "react";
 import BaseGrid from "../base/BaseGrid";
 
 const CustomTypography = ({ xs, sm, md, lg, sx, ...props }) => {
+  const customFontSizes = {
+    h1: "3rem",
+    h2: "2.75rem",
+    h3: "2.5rem",
+    h4: "2rem",
+    h5: "1.75rem",
+    h7: "0.870rem",
+  
+  };
+
   return (
     <BaseGrid xs={xs} sm={sm} md={md} lg={lg}>
-      {" "}
       <Typography
         sx={{
-          ...sx,
-
-
           fontWeight: "bold",
+          fontSize: customFontSizes[props.variant] || "1rem",
+          ...sx,
         }}
         {...props}
-        variant={props?.variant}
-        className={props?.className}
+        variant={props.variant || "h7"}
+        className={props.className}
       >
-        {props?.text}
-        <strong className="p-5 text-[#49f898]">{props?.strongText}</strong>
+        {props.text}
       </Typography>
     </BaseGrid>
   );

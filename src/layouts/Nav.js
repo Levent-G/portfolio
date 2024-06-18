@@ -1,3 +1,4 @@
+// src/components/TopBar.js
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -12,24 +13,25 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import classNames from 'classnames';
 import 'animate.css';
+import { useTheme } from '../context/ThemeContext';
+import CustomTypography from '../components/typography/CustomTypography'; // Import CustomTypography component
 
 const drawerWidth = 240;
-
-const navItems = ['HOMEPAGE','BLOG'];
+const navItems = ['HOMEPAGE', 'BLOG'];
 
 function TopBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { theme } = useTheme();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", bgcolor: theme.backgroundColor }}>
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
@@ -44,7 +46,7 @@ function TopBar(props) {
                 }
                 key={item}
               >
-                <ListItemText primary={item} />
+                <ListItemText primary={item} sx={{ color: theme.primaryTextColor }} />
               </Link>
             </ListItemButton>
           </ListItem>
@@ -53,8 +55,7 @@ function TopBar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -64,30 +65,15 @@ function TopBar(props) {
         className={classNames("animate__animated", "animate__fadeInDown")}
         style={{
           boxShadow: "none",
-          background:
-            "transparent linear-gradient(270deg, #3CB371 0%, #333333 62%, #333333 100%) 0% 0%",
+          background: `transparent linear-gradient(270deg, ${theme.primaryColor} 0%, #333333 62%, #333333 100%) 0% 0%`,
         }}
       >
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          ></Typography>
-
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box sx={{ flexGrow: 1 }} />
+          
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
             {navItems.map((item) => (
-              <button key={item}>
+              <button key={item} >
                 <Link
                   to={
                     item === "BLOG"
@@ -98,13 +84,21 @@ function TopBar(props) {
                   }
                   key={item}
                 >
-                  <p className="text-white  text-xs  hover:bg-[#339961] hover:transition-delay-300 font-sans p-5 leading-4 font-medium">
-                    {item}
-                  </p>
+                  <CustomTypography text={item} strongText="" sx={{ color: theme.primaryTextColor,fontSize:"12px" ,margin:1}}  />
                 </Link>
               </button>
             ))}
           </Box>
+          
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{ display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -121,6 +115,7 @@ function TopBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              bgcolor: theme.backgroundColor,
             },
           }}
         >

@@ -1,14 +1,15 @@
 import React from "react";
 import ContactForm from "./ContactForm";
 import CustomTypography from "../../../components/typography/CustomTypography";
-import { Box } from "@mui/material";
+import CustomPaper from "../../../components/paper/CustomPaper";
+import { useTheme } from "../../../context/ThemeContext";
 const Contact = () => {
+  const {theme} = useTheme();
   return (
-    <Box padding="5rem"  >
-      <CustomTypography variant="h4" sx={{ color: "#297580" }} text="CONTACT" />
-
+    <CustomPaper padding="5rem" >
+      <CustomTypography variant="h5" sx={{ color: theme.primaryColor }} text="CONTACT" />
       <ContactForm />
-    </Box>
+    </CustomPaper>
   );
 };
 

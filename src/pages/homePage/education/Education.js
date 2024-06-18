@@ -4,11 +4,13 @@ import Grid from "@mui/material/Grid";
 import CustomPaper from "../../../components/paper/CustomPaper";
 import CustomTypography from "../../../components/typography/CustomTypography";
 import EducationAndExperienceCard from "./EducationAndExperienceCard"
+import { useTheme } from "../../../context/ThemeContext";
 const Education = () => {
+  const {theme} = useTheme();
   return (
-    <CustomPaper padding="5rem"  bg="#398F60">
+    <CustomPaper padding="5rem"  bg= {theme.primaryColor}>
       <CustomTypography
-        variant="h4"
+        variant="h5"
         sx={{ color: "white" }}
         mb={5}
         text="EDUCATION AND EXPERIENCE"

@@ -9,6 +9,7 @@ import LoadingPage from "./layouts/LoadingPage";
 import Homepage from "./pages/homePage/Homepage";
 import BlogContent from "./pages/blog/BlogContent";
 import Blog from "./pages/blog/Blog";
+import { ThemeProvider } from "./context/ThemeContext";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -18,22 +19,23 @@ function App() {
     }, 1000);
   }, []);
 
-  if (loading) {
-    return <LoadingPage />;
-  }
+
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
-          <Route path="/pdf" element={<PdfPages />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <ThemeProvider>
+        {loading &&  <LoadingPage />}
+        <BrowserRouter>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Homepage />}></Route>
+            <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
+            <Route path="/pdf" element={<PdfPages />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   );
 }

@@ -7,12 +7,14 @@ import CustomPaper from "../../../components/paper/CustomPaper";
 import CustomTypography from "../../../components/typography/CustomTypography";
 import CustomButton from "../../../components/button/CustomButton";
 import { listItem } from "./AboutMeEnums";
+import { useTheme } from "../../../context/ThemeContext";
 
 const AboutMe = () => {
   const isSmallScreen = window.innerWidth < 768;
+  const { theme } = useTheme();
 
   return (
-    <CustomPaper padding="5rem"  darkMode={false}> 
+    <CustomPaper padding="5rem" darkMode={false}>
       <Grid container spacing={2}>
         <Grid
           item
@@ -27,9 +29,9 @@ const AboutMe = () => {
 
         <Grid item xs={12} md={6}>
           <CustomTypography
-            variant="h4"
+            variant="h5"
             text="About Me"
-            sx={{ color: "#297580" }}
+            sx={{ color: theme.primaryColor }}
             mb={4}
           />
 
@@ -45,9 +47,9 @@ const AboutMe = () => {
           />
 
           <CustomTypography
-            variant="h4"
+            variant="h5"
             text="   PERSONAL INFORMATION"
-            sx={{ color: "#297580" }}
+            sx={{ color: theme.primaryColor }}
             mt={5}
             mb={3}
           />

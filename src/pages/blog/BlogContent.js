@@ -9,9 +9,10 @@ import BlogCategory from "./BlogCategory";
 import { blogData } from "./shared/BlogEnums";
 import CustomPaper from "../../components/paper/CustomPaper";
 import CustomTypography from "../../components/typography/CustomTypography";
+import { useTheme } from "../../context/ThemeContext";
 const BlogContent = () => {
   const { blogBaslik } = useParams();
-
+  const {theme} = useTheme()
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [blogBaslik]);
@@ -26,7 +27,7 @@ const BlogContent = () => {
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <>
-              <CustomTypography variant="h4" mb={3} text={item.blogBaslik} />
+              <CustomTypography variant="h5" mb={3} text={item.blogBaslik} sx={{color:theme.primaryColor}}/>
 
               <Avatar
                 alt="Remy Sharp"

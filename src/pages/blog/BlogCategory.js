@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import { List, ListItem } from "@mui/material";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { categories } from "./shared/BlogEnums";
+import { useTheme } from "../../context/ThemeContext";
 
 const BlogCategory = () => {
+  const {theme} = useTheme();
   return (
     <div className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[40rem] overflow-y-scroll">
       <CustomTypography
         variant="h5"
         fontWeight="bold"
-        color="#339961"
+        color={theme.primaryColor}
         text="Kategoriler"
       />
 
@@ -22,8 +24,20 @@ const BlogCategory = () => {
             variant="body2"
           >
             <ListItem
-              className="mb-2 mt-5 text-gray-500 hover:bg-[#339961] hover:text-white pl-2 p-2 transition duration-500 ease-in-out rounded-lg"
-              style={{ cursor: "pointer" }}
+              sx={{
+                mb: 2,
+                mt: 5,
+                color: "gray",
+                "&:hover": {
+                  backgroundColor: theme.primaryColor,
+                  color: "white",
+                },
+                pl: 2,
+                p: 2,
+                transition: "background-color 0.5s ease-in-out",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
               component="div"
             >
               {category.name}
