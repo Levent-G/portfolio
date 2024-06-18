@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { Box } from "@mui/material";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import CustomPaper from "../components/paper/CustomPaper";
+import { useTheme } from "../context/ThemeContext";
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
-
+  const { theme } = useTheme();
+  console.log(theme.primaryColor);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -27,19 +29,25 @@ const Footer = () => {
     });
   };
   return (
-    <Box sx={{color:"#495e61",textAlign:"center"}}>
+    <CustomPaper sx={{ color: "#495e61", textAlign: "center" }}>
       {showButton && (
         <button onClick={scrollToTop}>
           <ArrowDropUpIcon
-            style={{ fontSize: 50 }}
-            className="relative bottom-6 bg-[#175f38] rounded-full text-white"
+            style={{
+              fontSize: 50,
+              backgroundColor: theme.primaryColor,
+              color: "white",
+              position: "relative",
+              bottom:"1.5rem",
+              borderRadius: "9999px"
+            }}
           />
           <br />
           Designed By Mustafa Levent Gülsüm
         </button>
       )}
-    </Box>
+    </CustomPaper>
   );
-}
+};
 
-export default Footer
+export default Footer;

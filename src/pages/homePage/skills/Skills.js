@@ -5,14 +5,16 @@ import { skilsData } from "./SkilsEnum";
 import CustomPaper from "../../../components/paper/CustomPaper";
 import CustomTypography from "../../../components/typography/CustomTypography";
 import CustomProgress from "../../../components/progress/CustomProgress";
+import { useTheme } from "../../../context/ThemeContext";
 
 const Skills = () => {
+  const {theme} = useTheme()
   return (
-    <CustomPaper padding="5rem"   bg="#398F60">
+    <CustomPaper padding="5rem"   bg={theme.primaryColor}>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <CustomTypography
-            variant="h4"
+            variant="h5"
             sx={{ color: "white" }}
             mb={5}
             text="SKILLS"

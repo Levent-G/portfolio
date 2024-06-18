@@ -21,13 +21,13 @@ const Header = () => {
           className={classNames("animate__animated", "animate__fadeInLeft")}
         >
           <CustomTypography
-            variant="h3"
-            text=" HI I'M"
-            strongText="MUSTAFA LEVENT "
-            sx={{ color: "#297580" }}
+            variant="h5"
+            text=" HI I'M MUSTAFA LEVENT"
+          
+            sx={{ color: "white" }}
           />
           <CustomTypography
-            variant="h5"
+            variant="h7"
             text="   I am a front-end developer. I graduated from Tokat Gaziosmanpaşa
               University Computer Engineering Department. I am doing freelance
               work...."

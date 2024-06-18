@@ -1,7 +1,9 @@
 import React from "react";
 import { CardContent, Card} from "@mui/material";
 import CustomTypography from "../../../components/typography/CustomTypography";
+import { useTheme } from "../../../context/ThemeContext";
 const MyProjectCard = ({...props}) => {
+  const {theme} = useTheme();
   return (
     <div>
       <Card
@@ -18,29 +20,29 @@ const MyProjectCard = ({...props}) => {
         <CardContent>
           <CustomTypography
             gutterBottom
-            variant="h5"
+            variant="h6"
             component="div"
-            sx={{ color: "#0c8390" }}
+            sx={{ color: theme.primaryColor }}
             text={(props.title.toUpperCase())}
           />
 
           <CustomTypography
-            variant="body2"
-            sx={{ color: "gray" }}
+            variant="h7"
+            sx={{ color: "#495e61"}}
             mb={5}
             text={props.content}
           />
   
       
           <CustomTypography
-            variant="body2"
-            sx={{ color: "grey",float:"left" ,paddingTop:"1.25rem"}}
+            variant="h7"
+            sx={{ color: "#495e61",float:"left" ,paddingTop:"1.25rem"}}
             text={props.cardLeftBtn}
           />
 
           <CustomTypography
-            variant="body2"
-            sx={{ color: "grey",float:"right",paddingTop:"1.25rem"}}
+            variant="h7"
+            sx={{ color: "#495e61",float:"right",paddingTop:"1.25rem"}}
             text={props.cardRightBtn}
           />
             </CardContent>

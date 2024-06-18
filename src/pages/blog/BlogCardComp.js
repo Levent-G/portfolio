@@ -13,11 +13,16 @@ import CustomTypography from "../../components/typography/CustomTypography";
 import { blogData } from "./shared/BlogEnums";
 const BlogCardComp = () => {
   const firstFiveBlogs = blogData.slice(0, 5);
+
   return (
     <div>
       {firstFiveBlogs.map((item, index) => (
         <>
-          <Link to={`/blogcontent/${item.blogBaslik}`} variant="body2" key={index}>
+          <Link
+            to={`/blogcontent/${item.blogBaslik}`}
+            variant="body2"
+            key={index}
+          >
             <Card className="mt-5 hover:bg-gray-200 ">
               <CardContent>
                 <CustomTypography
