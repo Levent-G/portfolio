@@ -10,6 +10,7 @@ import Homepage from "./pages/homePage/Homepage";
 import BlogContent from "./pages/blog/BlogContent";
 import Blog from "./pages/blog/Blog";
 import { ThemeProvider } from "./context/ThemeContext";
+import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -19,14 +20,13 @@ function App() {
     }, 1000);
   }, []);
 
-
-
   return (
     <div className="App">
       <ThemeProvider>
-        {loading &&  <LoadingPage />}
+        {loading && <LoadingPage />}
         <BrowserRouter>
           <Nav />
+          <ColorPickerComponent />
           <Routes>
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/blog" element={<Blog />}></Route>
