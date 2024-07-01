@@ -1,13 +1,5 @@
 export const skilsData = [
   {
-    name: "HTML",
-    value: 90,
-  },
-  {
-    name: "CSS",
-    value: 80,
-  },
-  {
     name: "JAVASCRIPT",
     value: 75,
   },
@@ -17,8 +9,21 @@ export const skilsData = [
   },
   {
     name: "NEXT.JS",
-    value: 10,
+    value: 50,
   },
+  {
+    name: "TYPESCRIPT",
+    value: 75,
+  },
+  {
+    name: "HTML",
+    value: 90,
+  },
+  {
+    name: "CSS",
+    value: 80,
+  },
+
   {
     name: "PHP",
     value: 25,

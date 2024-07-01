@@ -11,28 +11,24 @@ const Header = () => {
   const isSmallScreen = window.innerWidth < 768;
 
   return (
-    <CustomPaper padding="5rem"   bg="#333333" paddingTop="8rem"> 
+    <CustomPaper padding="5rem" bg="#333333" paddingTop="8rem">
       <Grid container spacing={2}>
         <Grid
           item
           xs={12}
           md={6}
-          
           className={classNames("animate__animated", "animate__fadeInLeft")}
         >
           <CustomTypography
             variant="h5"
             text=" HI I'M MUSTAFA LEVENT"
-          
             sx={{ color: "white" }}
           />
           <CustomTypography
             variant="h7"
-            text="   I am a front-end developer. I graduated from Tokat Gaziosmanpaşa
-              University Computer Engineering Department. I am doing freelance
-              work...."
+            text=" I am currently actively working in GIB technology in addition to doing freelance work as a front-end developer. I graduated from Tokat Gaziosmanpaşa University, Computer Engineering Department."
             mt={5}
-            sx={{ color: "#495e61"}}
+            sx={{ color: "#495e61" }}
           />
 
           <CustomButton linkTo="/pdf" text="Show CV" />
@@ -43,11 +39,11 @@ const Header = () => {
           xs={8}
           md={6}
           sx={{
-            display: isSmallScreen ? 'none' : 'block'
+            display: isSmallScreen ? "none" : "block",
           }}
           className={classNames("animate__animated", "animate__fadeInRight")}
         >
-          <img src={header3} alt=""/>
+          <img src={header3} alt="" />
         </Grid>
       </Grid>
     </CustomPaper>

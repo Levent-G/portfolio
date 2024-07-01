@@ -38,12 +38,7 @@ const AboutMe = () => {
           <CustomTypography
             variant="h7"
             sx={{ color: "#495e61", textAlign: "justify" }}
-            text="   I am a front-end developer. I graduated from Tokat Gaziosmanpaşa
-            University Computer Engineering Department. I am doing freelance
-            work. I am developing projects with React.js. I have done projects
-            such as social media project, chat project, notebook project. Apart
-            from that, I converted the sites with ready-made designs into
-            react....."
+            text=" I am a front-end developer. I graduated from Tokat Gaziosmanpaşa University Computer Engineering Department.I am currently actively working in GIB technology. I am developing projects with React.js. I have done projects such as social media project, chat project, notebook project. Apart from that, I converted the sites with ready-made designs into react....."
           />
 
           <CustomTypography
