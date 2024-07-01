@@ -13,7 +13,7 @@ const CustomPaper = ({ children, sx, ...props }) => {
       }}
       {...props}
     >
-      <Container>{children}</Container>
+      <Container maxWidth="xl">{children}</Container>
     </Paper>
   );
 };
