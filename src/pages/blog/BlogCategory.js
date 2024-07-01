@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { List, ListItem } from "@mui/material";
+import { Box, List, ListItem } from "@mui/material";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { categories } from "./shared/BlogEnums";
 import { useTheme } from "../../context/ThemeContext";
@@ -8,7 +8,7 @@ import { useTheme } from "../../context/ThemeContext";
 const BlogCategory = () => {
   const {theme} = useTheme();
   return (
-    <div className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[40rem] overflow-y-scroll">
+    <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[40rem] overflow-y-scroll">
       <CustomTypography
         variant="h5"
         fontWeight="bold"
@@ -45,7 +45,7 @@ const BlogCategory = () => {
           </Link>
         ))}
       </List>
-    </div>
+    </Box>
   );
 };
 

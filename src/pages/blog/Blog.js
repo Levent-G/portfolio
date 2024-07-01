@@ -20,7 +20,7 @@ const Blog = () => {
   }
 
   return (
-    <Box >
+    <Box mt={10} >
       <Container>
         <Grid container spacing={1}>
           <Grid item xs={12} md={8}>
