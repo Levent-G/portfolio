@@ -22,7 +22,7 @@ const BlogContent = () => {
   );
 
   return (
-    <CustomPaper>
+    <CustomPaper paddingTop="8rem" padding="5rem">
       <Grid container spacing={1}>
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (

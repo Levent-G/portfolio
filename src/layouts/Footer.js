@@ -5,7 +5,6 @@ import { useTheme } from "../context/ThemeContext";
 const Footer = () => {
   const [showButton, setShowButton] = useState(false);
   const { theme } = useTheme();
-  console.log(theme.primaryColor);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
