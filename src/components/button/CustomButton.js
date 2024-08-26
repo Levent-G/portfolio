@@ -23,8 +23,10 @@ const CustomButton = ({ sx, ...props }) => {
         }}
         size={props?.size ? props?.size : "small"}
         onClick={props?.onClick}
+        className={props?.className}
+        fullWidth={props?.fullWidth}
       >
-        {props?.text}
+        {props?.icon}{props?.text}
       </Button>
     </Link>
   );
