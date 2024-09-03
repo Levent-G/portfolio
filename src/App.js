@@ -11,6 +11,7 @@ import BlogContent from "./pages/blog/BlogContent";
 import Blog from "./pages/blog/Blog";
 import { ThemeProvider } from "./context/ThemeContext";
 import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
+import BlogEkleMain from "./pages/blog/blogEkle/BlogEkleMain";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/blog" element={<Blog />}></Route>
             <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
+            <Route path="/blogekle" element={<BlogEkleMain />} />
           </Routes>
           <Footer />
         </BrowserRouter>

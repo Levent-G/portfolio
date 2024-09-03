@@ -5,6 +5,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@gib-ui/core": "^0.1.36",
+    "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
     "@react-pdf-viewer/core": "^3.12.0",
@@ -25,7 +27,8 @@
     "react-slick": "^0.29.0",
     "react-syntax-highlighter": "^15.5.0",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -49,7 +49,7 @@ const BlogCategory = () => {
           ))}
         </List>
       </Box>
-      <CustomButton variant={"outlined"} text={"BLOG EKLE"} icon={<AddIcon />}  sx={{marginLeft:"1.5rem"}} fullWidth />
+      <CustomButton variant={"outlined"} text={"BLOG EKLE"} icon={<AddIcon />}  sx={{marginLeft:"1.5rem"}} fullWidth linkTo="/blogekle" />
     </>
   );
 };
