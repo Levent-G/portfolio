@@ -40,7 +40,7 @@ const BlogCategory = ({ isUserCategory }) => {
     };
 
     fetchCategories(isUserCategory && "levent");
-  }, []);
+  }, [isUserCategory]);
 
   return (
     <>
