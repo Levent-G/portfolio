@@ -9,6 +9,7 @@ const CustomTypography = ({ xs, sm, md, lg, sx, ...props }) => {
     h3: "2.5rem",
     h4: "2rem",
     h5: "1.75rem",
+    h6:"1.30rem",
     h7: "0.870rem",
   
   };

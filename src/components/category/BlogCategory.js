@@ -5,47 +5,58 @@ import CustomTypography from "../../components/typography/CustomTypography";
 import { useTheme } from "../../context/ThemeContext";
 import CustomButton from "../../components/button/CustomButton";
 import AddIcon from "@mui/icons-material/Add";
-import { db } from "../../firebase/firebase"; 
-import { collection, getDocs } from "firebase/firestore"; 
+import { db } from "../../firebase/firebase";
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
-const BlogCategory = () => {
+const BlogCategory = ({ isUserCategory }) => {
   const { theme } = useTheme();
-  const [categories, setCategories] = useState([]); 
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchCategories = async (user) => {
       try {
-        const querySnapshot = await getDocs(collection(db, "categories"));
-        const categoriesData = querySnapshot.docs.map(doc => ({
+        let q;
+        if (user === "levent") {
+          // Eğer user "levent" ise, sadece "user" alanı "levent" olanları çek
+          q = query(
+            collection(db, "categories"),
+            where("user", "==", "levent")
+          );
+        } else {
+          // Aksi takdirde, tüm kategorileri çek
+          q = query(collection(db, "categories"));
+        }
+
+        // Veriyi çekin
+        const querySnapshot = await getDocs(q);
+        const categoriesData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setCategories(categoriesData);
-        
-        
       } catch (error) {
         console.error("Kategorileri getirirken bir hata oluştu: ", error);
       }
     };
 
-    fetchCategories(); 
-  }, []); 
+    fetchCategories(isUserCategory && "levent");
+  }, []);
 
   return (
     <>
-      <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[40rem] overflow-y-scroll">
+      <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll">
         <CustomTypography
           variant="h5"
           fontWeight="bold"
           color={theme.primaryColor}
-          text="Kategoriler"
+          text={isUserCategory?"Levent's Blog":"Kategoriler"} // login gelince düzeltilcek
         />
 
         <List>
           {categories.map((category) => (
             <Link
               to={`/blogcontent/${category.name}`}
-              key={category.id} 
+              key={category.id}
               variant="body2"
             >
               <ListItem

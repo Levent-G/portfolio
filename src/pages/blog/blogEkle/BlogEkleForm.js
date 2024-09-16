@@ -33,6 +33,7 @@ const BlogEkleForm = () => {
       // Kategori tablosuna blog başlığını ekle
       await addDoc(collection(db, "categories"), {
         name: dataWithOthers.blogBaslik,
+        user:"levent" //login yapılınca burası düzeltilcek
       });
       console.log("Kategori eklendi: ", data.blogBaslik);
     } catch (e) {

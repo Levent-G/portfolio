@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Rating, Box, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-import BlogCategory from "./BlogCategory";
 import CustomPaper from "../../components/paper/CustomPaper";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { useTheme } from "../../context/ThemeContext";
@@ -9,10 +8,13 @@ import { db } from "../../firebase/firebase"; // Firestore yapılandırmasını 
 import { collection, query, where, getDocs } from "firebase/firestore"; // Firestore'dan veri çekmek için modüller
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import BlogCategory from "../../components/category/BlogCategory";
+import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 const BlogContent = () => {
   const { blogBaslik } = useParams();
   const { theme } = useTheme();
   const [selectedItem, setSelectedItem] = useState([]);
+  const breadcrumbLinks = [{ label: "Blog",href:"/blog" },{ label: "Blog Content" }];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,7 +42,9 @@ const BlogContent = () => {
 
   return (
     <CustomPaper paddingTop="8rem" padding="5rem">
-      <Grid container spacing={1}>
+      <Breadcrumbs links={breadcrumbLinks} />
+      <Grid container spacing={1} mt={5}>
+      
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <React.Fragment key={index}>
