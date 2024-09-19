@@ -6,25 +6,25 @@ import { useTheme } from "../../context/ThemeContext";
 import CustomButton from "../../components/button/CustomButton";
 import AddIcon from "@mui/icons-material/Add";
 import { db } from "../../firebase/firebase";
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
-const BlogCategory = ({ isUserCategory }) => {
+const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
   const { theme } = useTheme();
   const [categories, setCategories] = useState([]);
-
+  
   useEffect(() => {
-    const fetchCategories = async (user) => {
+    const fetchCategories = async (blogerName) => {
       try {
         let q;
-        if (user === "levent") {
-          // Eğer user "levent" ise, sadece "user" alanı "levent" olanları çek
+        //tüm kategoriler
+        if (blogerName === undefined) {
+          q = query(collection(db, "categories"));
+        } //kullanıcıya özel kategoriler
+        else {
           q = query(
             collection(db, "categories"),
-            where("user", "==", "levent")
+            where("user", "==", blogerName)
           );
-        } else {
-          // Aksi takdirde, tüm kategorileri çek
-          q = query(collection(db, "categories"));
         }
 
         // Veriyi çekin
@@ -39,9 +39,8 @@ const BlogCategory = ({ isUserCategory }) => {
       }
     };
 
-    fetchCategories(isUserCategory && "levent");
-  }, [isUserCategory]);
-
+    fetchCategories(isUserCategory && blogerName);
+  }, [isUserCategory,blogerName]);
   return (
     <>
       <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll">
@@ -49,10 +48,14 @@ const BlogCategory = ({ isUserCategory }) => {
           variant="h5"
           fontWeight="bold"
           color={theme.primaryColor}
-          text={isUserCategory?"Levent's Blog":"Kategoriler"} // login gelince düzeltilcek
+          text={isUserCategory ?  `${blogerName}'s Blog`: "Kategoriler"} // login gelince düzeltilcek
         />
 
         <List>
+        <CustomTypography
+          variant="h7"
+          text={categories.length ===0 && "Hiç Blogunuz Bulunamadı"} // login gelince düzeltilcek
+        />
           {categories.map((category) => (
             <Link
               to={`/blogcontent/${category.name}`}
@@ -88,7 +91,7 @@ const BlogCategory = ({ isUserCategory }) => {
         icon={<AddIcon />}
         sx={{ marginLeft: "1.5rem" }}
         fullWidth
-        linkTo="/blogekle"
+        onClick={() => setOpenModal(true)}
       />
     </>
   );

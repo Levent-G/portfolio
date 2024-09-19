@@ -10,11 +10,19 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import BlogCategory from "../../components/category/BlogCategory";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
+import ModalDescription from "../../components/modal/ModalDescription";
+import ModalComp from "../../components/modal/ModalComp";
+
 const BlogContent = () => {
   const { blogBaslik } = useParams();
   const { theme } = useTheme();
   const [selectedItem, setSelectedItem] = useState([]);
-  const breadcrumbLinks = [{ label: "Blog",href:"/blog" },{ label: "Blog Content" }];
+  const breadcrumbLinks = [
+    { label: "Blog", href: "/blog" },
+    { label: "Blog Content" },
+  ];
+  const [blogerName, setBlogerName] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -44,7 +52,6 @@ const BlogContent = () => {
     <CustomPaper paddingTop="8rem" padding="5rem">
       <Breadcrumbs links={breadcrumbLinks} />
       <Grid container spacing={1} mt={5}>
-      
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <React.Fragment key={index}>
@@ -102,7 +109,24 @@ const BlogContent = () => {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <BlogCategory />
+          <BlogCategory setOpenModal={setOpenModal}/>
+          {openModal && (
+            <ModalComp
+              open={openModal}
+              closeModal={() => {
+                setOpenModal(false);
+              }}
+              modalTitle={"BLOG'U KİM YAZIYOR ?"}
+              modalDescription={
+                <ModalDescription setBlogerName={setBlogerName} />
+              }
+              confirmLabel={" Onaylıyorum"}
+              confirmModal={() => {
+                setOpenModal(false);
+              }}
+              linkTo={`/blogEkle/${blogerName}`}
+            />
+          )}
         </Grid>
       </Grid>
     </CustomPaper>

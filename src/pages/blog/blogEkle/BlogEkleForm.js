@@ -7,7 +7,7 @@ import { db } from "../../../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import BlogEditor from "../../../components/quill/BlogEditor"; // BlogEditor bileşenini içe aktar
 
-const BlogEkleForm = () => {
+const BlogEkleForm = ({blogerName}) => {
   const { theme } = useTheme();
   const [blogIcerik, setBlogIcerik] = useState("");
 
@@ -24,7 +24,7 @@ const BlogEkleForm = () => {
       blogTarihi: blogTarihi,
       yazarName: yazarName,
       stars: stars,
-      blogIcerik: blogIcerik, // Blog içeriğini buraya ekleyin
+      blogIcerik: blogIcerik, 
     };
     try {
       const docRef = await addDoc(collection(db, "blogs"), dataWithOthers);
@@ -33,7 +33,7 @@ const BlogEkleForm = () => {
       // Kategori tablosuna blog başlığını ekle
       await addDoc(collection(db, "categories"), {
         name: dataWithOthers.blogBaslik,
-        user:"levent" //login yapılınca burası düzeltilcek
+        user:blogerName 
       });
       console.log("Kategori eklendi: ", data.blogBaslik);
     } catch (e) {

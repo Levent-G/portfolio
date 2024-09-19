@@ -33,7 +33,7 @@ function App() {
             <Route path="/blog" element={<Blog />}></Route>
             <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
-            <Route path="/blogekle" element={<BlogEkleMain />} />
+            <Route path="/blogekle/:blogerName" element={<BlogEkleMain />} />
           </Routes>
           <Footer />
         </BrowserRouter>

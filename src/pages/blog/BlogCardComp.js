@@ -16,7 +16,6 @@ const BlogCardComp = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const blogList = await getBlogs();
-      console.log("blogList", blogList);
       setBlogs(blogList.slice(0, 5)); // İlk 5 blogu almak
     };
 

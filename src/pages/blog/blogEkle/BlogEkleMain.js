@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomPaper from "../../../components/paper/CustomPaper";
 import { Typography } from "@gib-ui/core";
 import { useTheme } from "../../../context/ThemeContext";
@@ -6,10 +6,15 @@ import BlogEkleForm from "./BlogEkleForm";
 import BlogCategory from "../../../components/category/BlogCategory";
 import { Container, Grid } from "@mui/material";
 import Breadcrumbs from "../../../components/breadCrumbs/Breadcrumbs";
-
+import { useParams } from "react-router-dom";
+import ModalComp from "../../../components/modal/ModalComp";
+import ModalDescription from "../../../components/modal/ModalDescription";
 const BlogEkleMain = () => {
   const { theme } = useTheme();
   const breadcrumbLinks = [{ label: "Blog",href:"/blog" },{label:"Blog Ekle"}];
+  const { blogerName } = useParams();
+  const[openModal,setOpenModal] = useState(false)
+  const [blogerNameProps, setBlogerNameProps] = useState("");
 
   return (
     <CustomPaper  padding="5rem">
@@ -29,10 +34,27 @@ const BlogEkleMain = () => {
               Blog Ekle
             </Typography>
 
-            <BlogEkleForm />
+            <BlogEkleForm blogerName={blogerName}/>
           </Grid>
           <Grid item xs={12} md={4}>
-            <BlogCategory isUserCategory={true} />
+            <BlogCategory isUserCategory={true} blogerName={blogerName} setOpenModal={setOpenModal}/>
+            {openModal && (
+              <ModalComp
+                open={openModal}
+                closeModal={(_, event) => {
+                  if (event !== "backdropClick") {
+                    setOpenModal(false);
+                  }
+                }}
+                modalTitle={"BLOG'U KİM YAZIYOR ?"}
+                modalDescription={<ModalDescription setBlogerName={setBlogerNameProps}/>}
+                confirmLabel={" Onaylıyorum"}
+                confirmModal={() => {
+                  setOpenModal(false);
+                }}
+                linkTo={`/blogEkle/${blogerNameProps}`}
+              />
+            )}
           </Grid>
         </Grid>
       </Container>
