@@ -11,7 +11,7 @@ const Header = () => {
   const isSmallScreen = window.innerWidth < 768;
 
   return (
-    <CustomPaper padding="5rem" bg="#333333" paddingTop="8rem">
+    <CustomPaper padding="2rem" bg="#333333" paddingTop="8rem">
       <Grid container spacing={2}>
         <Grid
           item

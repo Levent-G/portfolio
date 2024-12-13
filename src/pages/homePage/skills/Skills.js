@@ -10,7 +10,7 @@ import { useTheme } from "../../../context/ThemeContext";
 const Skills = () => {
   const {theme} = useTheme()
   return (
-    <CustomPaper padding="5rem"   bg={theme.primaryColor}>
+    <CustomPaper padding="2rem"   bg={theme.primaryColor}>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <CustomTypography

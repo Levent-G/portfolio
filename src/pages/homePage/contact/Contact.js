@@ -6,7 +6,7 @@ import { useTheme } from "../../../context/ThemeContext";
 const Contact = () => {
   const {theme} = useTheme();
   return (
-    <CustomPaper padding="5rem" >
+    <CustomPaper padding="2rem" >
       <CustomTypography variant="h5" sx={{ color: theme.primaryColor }} text="CONTACT" />
       <ContactForm />
     </CustomPaper>

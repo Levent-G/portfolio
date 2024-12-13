@@ -43,7 +43,7 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
   }, [isUserCategory,blogerName]);
   return (
     <>
-      <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll">
+      <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll mt-12">
         <CustomTypography
           variant="h5"
           fontWeight="bold"
@@ -89,7 +89,7 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
         variant={"outlined"}
         text={"BLOG EKLE"}
         icon={<AddIcon />}
-        sx={{ marginLeft: "1.5rem" }}
+        sx={{ marginLeft: "0.5rem" ,marginBottom:"2rem"}}
         fullWidth
         onClick={() => setOpenModal(true)}
       />

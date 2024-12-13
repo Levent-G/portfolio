@@ -86,6 +86,7 @@ const BlogEkleForm = ({blogerName}) => {
         multiline
         rows={4}
         sx={{
+          marginTop:3,
           marginBottom: 3,
           "& .MuiFormLabel-root.Mui-focused": {
             color: theme.primaryColor,

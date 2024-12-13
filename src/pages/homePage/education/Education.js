@@ -8,7 +8,7 @@ import { useTheme } from "../../../context/ThemeContext";
 const Education = () => {
   const {theme} = useTheme();
   return (
-    <CustomPaper padding="5rem"  bg= {theme.primaryColor}>
+    <CustomPaper padding="2rem"  bg= {theme.primaryColor}>
       <CustomTypography
         variant="h5"
         sx={{ color: "white" }}

@@ -17,7 +17,7 @@ const BlogEkleMain = () => {
   const [blogerNameProps, setBlogerNameProps] = useState("");
 
   return (
-    <CustomPaper  padding="5rem">
+    <CustomPaper  padding="2rem">
       <Container>
       <Breadcrumbs links={breadcrumbLinks} />
         <Grid container spacing={1} mt={5}>

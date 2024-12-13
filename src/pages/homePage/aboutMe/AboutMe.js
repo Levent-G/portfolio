@@ -14,7 +14,7 @@ const AboutMe = () => {
   const { theme } = useTheme();
 
   return (
-    <CustomPaper padding="5rem" darkMode={false}>
+    <CustomPaper padding="2rem" darkMode={false}>
       <Grid container spacing={2}>
         <Grid
           item

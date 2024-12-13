@@ -49,9 +49,9 @@ const BlogContent = () => {
   }, [blogBaslik]); // blogBaslik değiştiğinde useEffect yeniden çalışacak
 
   return (
-    <CustomPaper padding="2rem" paddingTop="6rem">
+    <CustomPaper>
       <Breadcrumbs links={breadcrumbLinks} />
-      <Grid container spacing={1}>
+      <Grid container spacing={1} mt={3}>
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <React.Fragment key={index}>
@@ -83,17 +83,18 @@ const BlogContent = () => {
                   border: 4,
                   borderColor: "grey.100",
                   p: 5,
-                  mt: 3,
+                  mt: 5,
                   lineHeight: "2.5rem",
                   fontSize: "1.25rem",
                   bgcolor: "grey.100",
+                  marginBottom:"5rem"
                 }}
                 dangerouslySetInnerHTML={{ __html: item.blogIcerik }} // Quill'den gelen HTML içeriği
               />
 
               {item.codeExample !== "" ? (
                 <>
-                  <CustomTypography variant="h7" text="EXAMPLE" />
+                  <CustomTypography variant="h7" text="EXAMPLE"  />
                   <SyntaxHighlighter
                     language="javascript"
                     style={solarizedlight}

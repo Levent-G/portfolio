@@ -9,7 +9,7 @@ import { useTheme } from "../../../context/ThemeContext";
 const MyProject = () => {
   const {theme} =useTheme()
   return (
-    <CustomPaper padding="5rem"  >
+    <CustomPaper padding="2rem"  >
       <CustomTypography
         variant="h5"
         className={`text-${theme.primaryColor}  font-bold leading-[3rem] max-w-lg mx-auto pt-12 pb-5`}

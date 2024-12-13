@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import LoadingPage from "../../layouts/LoadingPage";
 import BlogCardComp from "../blog/BlogCardComp";
 import CustomPaper from "../../components/paper/CustomPaper";
@@ -25,10 +25,9 @@ const Blog = () => {
   }
 
   return (
-    <CustomPaper paddingTop="8rem" padding="5rem">
-      <Container>
+    <CustomPaper  >
         <Breadcrumbs links={breadcrumbLinks} />
-        <Box padding="2rem" paddingTop="6rem">
+        <Box padding="1rem" >
           <Grid container spacing={1}>
             <Grid item xs={12} md={8}>
               <BlogCardComp />
@@ -56,8 +55,7 @@ const Blog = () => {
               )}
             </Grid>
           </Grid>
-        </Box>{" "}
-      </Container>
+        </Box>
     </CustomPaper>
   );
 };
