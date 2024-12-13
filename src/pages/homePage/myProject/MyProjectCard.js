@@ -5,7 +5,7 @@ import { useTheme } from "../../../context/ThemeContext";
 const MyProjectCard = ({...props}) => {
   const {theme} = useTheme();
   return (
-    <div>
+    <>
       <Card
         sx={{
           boxShadow: 3,
@@ -47,7 +47,7 @@ const MyProjectCard = ({...props}) => {
           />
             </CardContent>
       </Card>
-    </div>
+    </>
   );
 };
 
