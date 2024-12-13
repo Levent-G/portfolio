@@ -49,9 +49,9 @@ const BlogContent = () => {
   }, [blogBaslik]); // blogBaslik değiştiğinde useEffect yeniden çalışacak
 
   return (
-    <CustomPaper paddingTop="8rem" padding="5rem">
+    <CustomPaper padding="2rem" paddingTop="6rem">
       <Breadcrumbs links={breadcrumbLinks} />
-      <Grid container spacing={1} mt={5}>
+      <Grid container spacing={1}>
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <React.Fragment key={index}>
@@ -109,7 +109,7 @@ const BlogContent = () => {
         </Grid>
 
         <Grid item xs={12} md={4}>
-          <BlogCategory setOpenModal={setOpenModal}/>
+          <BlogCategory setOpenModal={setOpenModal} />
           {openModal && (
             <ModalComp
               open={openModal}
