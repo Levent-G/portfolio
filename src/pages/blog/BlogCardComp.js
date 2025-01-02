@@ -23,7 +23,7 @@ const BlogCardComp = () => {
   }, []);
   
   return (
-    <div>
+    <>
       {blogs.map((item, index) => (
         <Link to={`/blogcontent/${item.blogBaslik}`} key={index}>
           <Card className="mt-5 hover:bg-gray-100">
@@ -62,7 +62,7 @@ const BlogCardComp = () => {
           </Card>
         </Link>
       ))}
-    </div>
+    </>
   );
 };
 

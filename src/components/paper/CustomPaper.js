@@ -8,7 +8,7 @@ const CustomPaper = ({ children, sx, ...props }) => {
       sx={{
         ...sx,
         padding: props?.padding,
-        paddingTop: props?.paddingTop,
+        paddingTop: props?.pt,
         backgroundColor: props.bg ? props.bg : "white",
       }}
       {...props}

@@ -18,7 +18,7 @@ const ColorPickerComponent = () => {
   };
 
   return (
-    <div>
+    <>
       <Fab 
         color="primary" 
         aria-label="color picker" 
@@ -46,7 +46,7 @@ const ColorPickerComponent = () => {
           </IconButton>
         </Box>
       </Modal>
-    </div>
+    </>
   );
 };
 

@@ -84,7 +84,7 @@ function TopBar(props) {
                   }
                   key={item}
                 >
-                  <CustomTypography text={item} strongText="" sx={{ color: theme.primaryTextColor,fontSize:"12px" ,margin:1}}  />
+                  <CustomTypography text={item}  sx={{ color: theme.primaryTextColor,fontSize:"12px" ,margin:1}}  />
                 </Link>
               </button>
             ))}

@@ -4,7 +4,7 @@ const PdfPages = () => {
 
 
   return (
-    <div>
+    <>
         <iframe
         title="PDF Viewer"
         src="/pdf/MustafaLeventGülsüm.pdf"
@@ -13,7 +13,7 @@ const PdfPages = () => {
        
       />
 
-  </div>
+  </>
   )
 }
 
