@@ -99,7 +99,7 @@
   /* Hayır butonuna mouse ile yaklaşınca rastgele hareket */
   .hayir-hover {
     position: absolute;
-    animation: moveRandom 1s infinite;
+    animation: moveRandom 1s forwards; /* 'forwards' ile animasyon tamamlandıktan sonra son pozisyonda kalır */
   }
   
   @keyframes moveRandom {

@@ -4,9 +4,14 @@ import './deneme.css';
 const Deneme = () => {
   const [moveButton, setMoveButton] = useState(false);
   const [explosion, setExplosion] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false); // Butonun hareket edip etmediğini takip etmek için
 
   const handleMouseEnter = () => {
-    setMoveButton(true);
+    // Eğer buton daha önce hareket etmediyse, hareket etmesini sağlıyoruz
+    if (!hasMoved) {
+      setMoveButton(true);
+      setHasMoved(true); // Buton bir kere hareket etti
+    }
   };
 
   const handleMouseLeave = () => {
@@ -25,7 +30,7 @@ const Deneme = () => {
       <div className="kalp">
         <span>Selbim</span>
       </div>
-      <label>Kalbin içinde hep aynı kişi mi olucak</label>
+      <label>Seçiminizi yapın</label>
       <div>
         <button
           className={`evet ${explosion ? 'patlama' : ''}`}
@@ -33,13 +38,7 @@ const Deneme = () => {
         >
           Evet
         </button>
-        <button
-          className={`hayir ${moveButton ? 'hayir-hover' : ''}`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          Hayır
-        </button>
+       
       </div>
     </div>
   );
