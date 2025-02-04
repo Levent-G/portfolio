@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
     flex-direction: column; /* Kalp, yazı ve butonlar dikey olarak hizalanacak */
   }
   
@@ -12,7 +12,7 @@
     background-color: red;
     height: 100px;
     width: 100px;
-    transform: rotate(-45deg);
+    transform: rotate(-40deg);
     animation: heartbeat 1s ease-in-out infinite;
     transform-origin: center;
     display: flex;
@@ -42,11 +42,13 @@
   
   .kalp span {
     position: absolute;
-    transform: rotate(0deg);
+    transform: rotate(45deg);
     z-index: 1;
-    font-size: 18px;
+    font-size: 28px;
     color: white;
     font-weight: bold;
+    margin-bottom: 30px;
+    margin-left: 30px;
   }
   
   @keyframes heartbeat {
@@ -87,12 +89,12 @@
   }
   
   .evet {
-    background-color: green;
-    color: white;
+    background-color: rgb(233, 233, 233);
+    color: black;
   }
   
   .hayir {
-    background-color: red;
+    background-color: black;
     color: white;
   }
   
