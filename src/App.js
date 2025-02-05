@@ -13,6 +13,8 @@ import { ThemeProvider } from "./context/ThemeContext";
 import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
 import BlogEkleMain from "./pages/blog/blogEkle/BlogEkleMain";
 import Deneme from "./pages/Deneme";
+import OurDreams from "./pages/OurDreams";
+
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -25,20 +27,22 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-        {loading && <LoadingPage />}
+        {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" &&loading && <LoadingPage />}
         <BrowserRouter>
-          <Nav />
-          <ColorPickerComponent />
+          {/* Conditionally render Nav and Footer */}
+          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <Nav />}
+          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <ColorPickerComponent />}
           <Routes>
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/blog" element={<Blog />}></Route>
             <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
             <Route path="/blogekle/:blogerName" element={<BlogEkleMain />} />
-            <Route path="/leventinKalbi" element={<Deneme />}></Route>
-            
+            <Route path="/leventinKalbi" element={<Deneme />} />
+            <Route path="/ourdreams" element={<OurDreams />} />
           </Routes>
-          <Footer />
+          {/* Conditionally render Footer */}
+          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <Footer />}
         </BrowserRouter>
       </ThemeProvider>
     </div>
