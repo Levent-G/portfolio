@@ -109,7 +109,7 @@ const OurDreams = () => {
        <div className="w-full flex justify-center gap-8 mb-6">
         <div className="flex flex-col items-center">
           <div className="w-12 h-2 bg-green-500 mb-2"></div>
-          <p className="text-black">Yapmakta Olduklarımız</p>
+          <p className="text-black">Yaptıklarımız</p>
         </div>
         <div className="flex flex-col items-center">
           <div className="w-12 h-2 bg-blue-500 mb-2"></div>
