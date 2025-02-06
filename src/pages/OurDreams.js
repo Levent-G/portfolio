@@ -89,24 +89,27 @@ const OurDreams = () => {
     <div className="flex flex-col items-center p-4 mt-24 mb-8">
       <h1 className="text-3xl font-bold mb-4">Planladıklarımız</h1>
 
-     
-    
       <div className="mb-12 mt-5">
-        
-      <TextField
+        <TextField
           label="Hayallerinizi buraya yazınız."
           variant="outlined"
           value={task}
           onChange={(e) => setTask(e.target.value)}
           fullWidth
-          sx={{padding:1}}
+          sx={{ padding: 1 }}
         />
-           <Button variant="contained" onClick={addTask} color="success" size="small" className="float-right">
+        <Button
+          variant="contained"
+          onClick={addTask}
+          color="success"
+          size="small"
+          className="float-right"
+        >
           Ekle
         </Button>
       </div>
-       {/* New section with the colored bars and descriptions */}
-       <div className="w-full flex justify-center gap-8 mb-6">
+      {/* New section with the colored bars and descriptions */}
+      <div className="w-full flex justify-center gap-8 mb-6">
         <div className="flex flex-col items-center">
           <div className="w-12 h-2 bg-green-500 mb-2"></div>
           <p className="text-black">Yaptıklarımız</p>
@@ -120,8 +123,32 @@ const OurDreams = () => {
           <p className="text-black">Kesin Yapacaklarımız</p>
         </div>
       </div>
+
+      {/* New section with the colored bars and descriptions */}
+      <div className="w-full flex justify-center gap-8 mb-6">
+        <div className="flex flex-col items-center">
+          <IconButton color="success">
+            <CheckCircle />
+          </IconButton>
+          <p className="text-black">Yaptıklarımızı işaretlemek için</p>
+        </div>
+        <div className="flex flex-col items-center">
+          <IconButton color="primary">
+            <ArrowUpward />
+          </IconButton>
+          <p className="text-black">
+            İlk önce yapmak istediklerimizi en üste almak için
+          </p>
+        </div>
+        <div className="flex flex-col items-center">
+          <IconButton color="error">
+            <Delete />
+          </IconButton>
+          <p className="text-black">Planı silmek için</p>
+        </div>
+      </div>
       <div className="w-full max-w-lg space-y-4 mt-12">
-        {tasks.map(({ id, text, completed, priority },index) => (
+        {tasks.map(({ id, text, completed, priority }, index) => (
           <Card
             key={id}
             className="w-full p-4 flex justify-between items-center "
@@ -134,7 +161,7 @@ const OurDreams = () => {
             }}
           >
             <CardContent className="flex-grow  ">
-              <p className={"text-black"}>{index+1}.</p>
+              <p className={"text-black"}>{index + 1}.</p>
             </CardContent>
             <CardContent className="flex-grow ">
               <p className={"text-black"}>{text}</p>
@@ -145,7 +172,10 @@ const OurDreams = () => {
                   <CheckCircle />
                 </IconButton>
               )}
-              <IconButton onClick={() => promoteTask(id, priority)} color="primary">
+              <IconButton
+                onClick={() => promoteTask(id, priority)}
+                color="primary"
+              >
                 <ArrowUpward />
               </IconButton>
               <IconButton onClick={() => confirmDelete(id)} color="error">
@@ -158,7 +188,9 @@ const OurDreams = () => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Plandan Vazgeç</DialogTitle>
         <DialogContent>
-          <DialogContentText>Bu planı iptal etmek istediğinize emin misiniz?</DialogContentText>
+          <DialogContentText>
+            Bu planı iptal etmek istediğinize emin misiniz?
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
