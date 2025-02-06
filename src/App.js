@@ -12,7 +12,6 @@ import Blog from "./pages/blog/Blog";
 import { ThemeProvider } from "./context/ThemeContext";
 import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
 import BlogEkleMain from "./pages/blog/blogEkle/BlogEkleMain";
-import Deneme from "./pages/Deneme";
 import OurDreams from "./pages/OurDreams";
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
             <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
             <Route path="/blogekle/:blogerName" element={<BlogEkleMain />} />
-            <Route path="/leventinKalbi" element={<Deneme />} />
             <Route path="/ourdreams" element={<OurDreams />} />
           </Routes>
           {/* Conditionally render Footer */}
