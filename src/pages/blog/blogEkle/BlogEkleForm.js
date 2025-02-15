@@ -18,7 +18,7 @@ const BlogEkleForm = ({blogerName}) => {
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
     const stars = 2.5;
-
+console.log(blogIcerik)
     const dataWithOthers = {
       ...data,
       blogTarihi: blogTarihi,
@@ -74,7 +74,7 @@ const BlogEkleForm = ({blogerName}) => {
         name="blogIcerik"
         key="blogIcerik"
         value={blogIcerik}
-        onChange={setBlogIcerik}
+        customOnChange={setBlogIcerik}
         label="Blog İçerik"
       />
 
