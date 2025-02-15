@@ -12,7 +12,7 @@ import Blog from "./pages/blog/Blog";
 import { ThemeProvider } from "./context/ThemeContext";
 import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
 import BlogEkleMain from "./pages/blog/blogEkle/BlogEkleMain";
-import OurDreams from "./pages/OurDreams";
+import OurDreams from "./pages/deneme/OurDreams";
 
 function App() {
   const [loading, setLoading] = useState(true);
