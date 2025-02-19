@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { db } from "../../firebase/firebase";
+import React, { useState, useEffect, useCallback } from "react"; // useCallback import edelim
+import { db, auth } from "../../firebase/firebase";
 import {
   collection,
   addDoc,
@@ -9,6 +9,7 @@ import {
   doc,
   query,
   orderBy,
+  where,
 } from "firebase/firestore";
 import {
   TextField,
@@ -29,31 +30,59 @@ const OurDreams = () => {
   const [tasks, setTasks] = useState([]);
   const [open, setOpen] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [userType, setUserType] = useState(null);
+
+  const fetchTasks = useCallback(async () => {
+    if (userType !== null) {
+      const q = query(
+        collection(db, "tasks"),
+        where("userType", "==", userType), // userType'a göre filtrele
+        orderBy("priority", "desc")
+      );
+      const querySnapshot = await getDocs(q);
+      const tasksArray = querySnapshot.docs.map((doc, index) => ({
+        id: doc.id,
+        order: index + 1,
+        ...doc.data(),
+      }));
+
+      setTasks(tasksArray);
+    }
+  }, [userType]); // userType değiştiğinde fetchTasks'i yeniden çalıştır
 
   useEffect(() => {
+    fetchUserData();
     fetchTasks();
-  }, []);
+  }, [userType, fetchTasks]); // Bağımlılıklar listesinde fetchTasks var
 
-  const fetchTasks = async () => {
-    const q = query(collection(db, "tasks"), orderBy("priority", "desc"));
-    const querySnapshot = await getDocs(q);
-    const tasksArray = querySnapshot.docs.map((doc, index) => ({
-      id: doc.id,
-      order: index + 1,
-      ...doc.data(),
-    }));
-    setTasks(tasksArray);
+  // Kullanıcı bilgilerini al
+  const fetchUserData = async () => {
+    const user = auth.currentUser; // Giriş yapan kullanıcıyı alıyoruz.
+    if (user) {
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("uid", "==", user.uid)); // UID'ye göre kullanıcıyı buluyoruz
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        const userData = doc.data();
+        setUserType(userData.userType); // userType'ı set ediyoruz
+      });
+    }
   };
 
+  // Diğer kodlar aynen kalacak
   const addTask = async () => {
     if (task.trim() === "") return;
-    await addDoc(collection(db, "tasks"), {
-      text: task,
-      completed: false,
-      priority: 0,
-    });
-    setTask("");
-    fetchTasks();
+    if (userType !== null) {
+      await addDoc(collection(db, "tasks"), {
+        text: task,
+        completed: false,
+        priority: 0,
+        userType: userType, // userType'ı da kaydet
+      });
+      setTask("");
+      fetchTasks();
+    }
   };
 
   const completeTask = async (id) => {
@@ -92,7 +121,7 @@ const OurDreams = () => {
 
       <div className="w-full max-w-md mb-8">
         <TextField
-          label="Bir hayalini ekle sevgilim..."
+          label={userType === 1? "Bir hayalini ekle sevgilim...":"Bir hayalini ekle..."}
           variant="outlined"
           value={task}
           onChange={(e) => setTask(e.target.value)}
@@ -158,8 +187,6 @@ const OurDreams = () => {
           </Card>
         ))}
       </div>
-
-     
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Plandan Vazgeç</DialogTitle>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { auth } from "./firebase/firebase"; 
+import { onAuthStateChanged } from "firebase/auth";
 
 import Nav from "./layouts/Nav";
 import Footer from "./layouts/Footer";
-
 import PdfPages from "./components/pdf/PdfPages";
 import LoadingPage from "./layouts/LoadingPage";
 import Homepage from "./pages/homePage/Homepage";
@@ -13,9 +14,18 @@ import { ThemeProvider } from "./context/ThemeContext";
 import ColorPickerComponent from "./components/colorPicker/ColorPickerComponent";
 import BlogEkleMain from "./pages/blog/blogEkle/BlogEkleMain";
 import OurDreams from "./pages/deneme/OurDreams";
+import Login from "./pages/deneme/Login/Login";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,24 +33,27 @@ function App() {
     }, 1000);
   }, []);
 
+  const ProtectedRoute = ({ children }) => {
+    return user ? children : <Navigate to="/ourdreams/login" />;
+  };
+
   return (
     <div className="App">
       <ThemeProvider>
-        {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" &&loading && <LoadingPage />}
+        {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/ourdreams/login" && loading && <LoadingPage />}
         <BrowserRouter>
-          {/* Conditionally render Nav and Footer */}
-          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <Nav />}
-          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <ColorPickerComponent />}
+          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/ourdreams/login" && <Nav />}
+          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/ourdreams/login" && <ColorPickerComponent />}
           <Routes>
-            <Route path="/" element={<Homepage />}></Route>
-            <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/blogcontent/:blogBaslik" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
             <Route path="/blogekle/:blogerName" element={<BlogEkleMain />} />
-            <Route path="/ourdreams" element={<OurDreams />} />
+            <Route path="/ourdreams/login" element={<Login />} />
+            <Route path="/ourdreams" element={<ProtectedRoute><OurDreams /></ProtectedRoute>} />
           </Routes>
-          {/* Conditionally render Footer */}
-          {window.location.pathname !== "/ourdreams" && window.location.pathname !== "/leventinKalbi" && <Footer />}
+          {window.location.pathname !== "/ourdreams" && <Footer />}
         </BrowserRouter>
       </ThemeProvider>
     </div>
