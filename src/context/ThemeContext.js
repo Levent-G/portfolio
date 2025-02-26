@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState({
-    primaryColor: "#FF6F61",
+    primaryColor: "#7F5AF0",
 
   });
 

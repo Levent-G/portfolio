@@ -12,6 +12,7 @@ import BlogCategory from "../../components/category/BlogCategory";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import ModalDescription from "../../components/modal/ModalDescription";
 import ModalComp from "../../components/modal/ModalComp";
+import ReactQuill from "react-quill";
 
 const BlogContent = () => {
   const { blogBaslik } = useParams();
@@ -77,24 +78,28 @@ const BlogContent = () => {
               <Rating name="half-rating" value={item.stars} precision={0.5} />
               <Box
                 sx={{
-                  px: 5,
                   borderRadius: 1,
                   boxShadow: 3,
                   border: 4,
                   borderColor: "grey.100",
-                  p: 5,
                   mt: 5,
                   lineHeight: "2.5rem",
                   fontSize: "1.25rem",
                   bgcolor: "grey.100",
-                  marginBottom:"5rem"
+                  marginBottom: "5rem",
                 }}
-                dangerouslySetInnerHTML={{ __html: item.blogIcerik }} // Quill'den gelen HTML içeriği
-              />
+              >
+                <ReactQuill
+                  value={item.blogIcerik}
+                  readOnly
+                  theme="snow"
+                  modules={{ toolbar: false }}
+                />
+              </Box>
 
               {item.codeExample !== "" ? (
                 <>
-                  <CustomTypography variant="h7" text="EXAMPLE"  />
+                  <CustomTypography variant="h7" text="EXAMPLE" />
                   <SyntaxHighlighter
                     language="javascript"
                     style={solarizedlight}

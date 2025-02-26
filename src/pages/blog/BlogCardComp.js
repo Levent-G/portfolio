@@ -6,55 +6,56 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import ReactQuill from "react-quill"; // Quill bileşenini import ettik
+import ReactQuill from "react-quill";
 import { Link } from "react-router-dom";
 import CustomTypography from "../../components/typography/CustomTypography";
-import { getBlogs } from "../../services/GetBlogs"; // Blog verilerini getiren fonksiyon
+import { getBlogs } from "../../services/GetBlogs";
+
 const BlogCardComp = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       const blogList = await getBlogs();
-      setBlogs(blogList.slice(0, 5)); // İlk 5 blogu almak
+      setBlogs(blogList.slice(0, 5));
     };
 
     fetchBlogs();
   }, []);
-  
-  return (
-    <>
-      {blogs.map((item, index) => (
-        <Link to={`/blogcontent/${item.blogBaslik}`} key={index}>
-          <Card className="mt-5 hover:bg-gray-100">
-            <CardContent>
-              <CustomTypography
-                gutterBottom
-                variant="h6"
-                component="div"
-                text={item.blogBaslik}
-              />
 
-              <Typography variant="body2" color="text.secondary">
+  return (
+    <div className="flex flex-col gap-6 p-6">
+      {blogs.map((item, index) => (
+        <Link
+          to={`/blogcontent/${item.blogBaslik}`}
+          key={index}
+          className="transition-transform transform hover:scale-105"
+        >
+          <Card className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+            <div className="relative h-48 bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl font-bold p-3">
+              {item.blogBaslik}
+            </div>
+            <CardContent className="p-4">
+              <Typography variant="body2" color="text.secondary" className="line-clamp-3 text-gray-700">
                 <ReactQuill
                   value={item.blogIcerik}
                   readOnly
                   theme="snow"
-                  modules={{ toolbar: false }} 
+                  modules={{ toolbar: false }}
                 />
               </Typography>
             </CardContent>
-            <CardActions sx={{ float: "left !important" }}>
+            <CardActions className="flex justify-between px-4 pb-4">
+              <div className="flex items-center space-x-2">
+                <CustomTypography
+                  size="small"
+                  color="text.secondary"
+                  text={item.yazarName}
+                />
+                <Rating name="half-rating" value={item.stars} precision={0.5} />
+              </div>
               <CustomTypography
-                size="small"
-                color="text.secondary"
-                text={item.yazarName}
-              />
-              <Rating name="half-rating" value={item.stars} precision={0.5} />
-            </CardActions>
-            <CardActions sx={{ float: "right !important" }}>
-              <CustomTypography
-                variant="h7"
+                variant="body2"
                 color="text.secondary"
                 text={item.blogTarihi}
               />
@@ -62,7 +63,7 @@ const BlogCardComp = () => {
           </Card>
         </Link>
       ))}
-    </>
+    </div>
   );
 };
 

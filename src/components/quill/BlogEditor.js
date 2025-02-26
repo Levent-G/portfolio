@@ -37,7 +37,7 @@ const BlogEditor = ({
               modules={BlogEditor.modules}
               formats={BlogEditor.formats}
               theme="snow"
-              className={`h-[200px] mb-12 ${
+              className={`h-[500px] mb-12 ${
                 error ? " border border-red-500" : ""
               }`}
             />

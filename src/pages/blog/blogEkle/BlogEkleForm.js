@@ -6,10 +6,13 @@ import { useTheme } from "../../../context/ThemeContext";
 import { db } from "../../../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import BlogEditor from "../../../components/quill/BlogEditor"; // BlogEditor bileşenini içe aktar
+import { v4 as uuidv4 } from 'uuid'; // uuid kütüphanesini import et
+import { useNavigate } from "react-router-dom";
 
-const BlogEkleForm = ({blogerName}) => {
+const BlogEkleForm = ({ blogerName }) => {
   const { theme } = useTheme();
   const [blogIcerik, setBlogIcerik] = useState("");
+  const navigate = useNavigate();
 
   const blogEkle = async (data) => {
     const yazarName = "Levent";
@@ -18,14 +21,17 @@ const BlogEkleForm = ({blogerName}) => {
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
     const stars = 2.5;
-console.log(blogIcerik)
+    const uniqueId = uuidv4(); // Benzersiz ID oluştur
+
     const dataWithOthers = {
       ...data,
       blogTarihi: blogTarihi,
       yazarName: yazarName,
       stars: stars,
-      blogIcerik: blogIcerik, 
+      blogIcerik: blogIcerik,
+      id: uniqueId, // Bloga benzersiz bir ID ekle
     };
+
     try {
       const docRef = await addDoc(collection(db, "blogs"), dataWithOthers);
       console.log("Document written with ID: ", docRef.id);
@@ -33,8 +39,10 @@ console.log(blogIcerik)
       // Kategori tablosuna blog başlığını ekle
       await addDoc(collection(db, "categories"), {
         name: dataWithOthers.blogBaslik,
-        user:blogerName 
+        user: blogerName,
+        blogId: uniqueId, // Kategorinin blogID'sini ekle
       });
+      navigate("/blog")
       console.log("Kategori eklendi: ", data.blogBaslik);
     } catch (e) {
       console.error("Error adding document: ", e);
@@ -84,9 +92,9 @@ console.log(blogIcerik)
         key="codeExample"
         labeltext="Kod Örneği"
         multiline
-        rows={4}
+        rows={24}
         sx={{
-          marginTop:3,
+          marginTop: 3,
           marginBottom: 3,
           "& .MuiFormLabel-root.Mui-focused": {
             color: theme.primaryColor,
