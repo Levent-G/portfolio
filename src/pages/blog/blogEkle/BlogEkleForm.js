@@ -48,7 +48,7 @@ const BlogEkleForm = ({ blogerName }) => {
       console.error("Error adding document: ", e);
     }
   };
-
+ 
   return (
     <Form onSubmit={blogEkle} onReset schema={blogEkleFormSchema}>
       <TextField

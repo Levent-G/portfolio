@@ -15,7 +15,6 @@ import ModalComp from "../../components/modal/ModalComp";
 import ReactQuill from "react-quill";
 
 const BlogContent = () => {
-  const { blogBaslik } = useParams();
   const { theme } = useTheme();
   const [selectedItem, setSelectedItem] = useState([]);
   const breadcrumbLinks = [
@@ -25,29 +24,28 @@ const BlogContent = () => {
   const [blogerName, setBlogerName] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
+  const { bloguuid } = useParams(); // URL'den gelen ID
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Firestore'dan blog verilerini getiren fonksiyon
     const fetchBlog = async () => {
       try {
-        const q = query(
-          collection(db, "blogs"),
-          where("blogBaslik", "==", blogBaslik)
-        );
+        const q = query(collection(db, "blogs"), where("id", "==", bloguuid)); // Firestore ID'si ile eşleşen belgeyi al
         const querySnapshot = await getDocs(q);
         const blogData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        setSelectedItem(blogData); // Firestore'dan alınan veriyi state'e set ettik
+
+        setSelectedItem(blogData);
       } catch (error) {
         console.error("Blog verilerini getirirken bir hata oluştu: ", error);
       }
     };
 
     fetchBlog();
-  }, [blogBaslik]); // blogBaslik değiştiğinde useEffect yeniden çalışacak
+  }, [bloguuid]);
 
   return (
     <CustomPaper>
@@ -94,6 +92,8 @@ const BlogContent = () => {
                   readOnly
                   theme="snow"
                   modules={{ toolbar: false }}
+                  className="h-full"
+                  
                 />
               </Box>
 

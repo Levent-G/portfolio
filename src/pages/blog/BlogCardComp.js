@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { getBlogs } from "../../services/GetBlogs";
 
+
 const BlogCardComp = () => {
   const [blogs, setBlogs] = useState([]);
 
@@ -18,16 +19,19 @@ const BlogCardComp = () => {
     const fetchBlogs = async () => {
       const blogList = await getBlogs();
       setBlogs(blogList.slice(0, 5));
+      console.log(blogList)
+
     };
 
     fetchBlogs();
   }, []);
 
+ 
   return (
     <div className="flex flex-col gap-6 p-6">
       {blogs.map((item, index) => (
         <Link
-          to={`/blogcontent/${item.blogBaslik}`}
+          to={`/blogcontent/${item.id}`}
           key={index}
           className="transition-transform transform hover:scale-105"
         >

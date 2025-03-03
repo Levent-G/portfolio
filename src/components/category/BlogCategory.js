@@ -41,6 +41,9 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
 
     fetchCategories(isUserCategory && blogerName);
   }, [isUserCategory,blogerName]);
+
+
+ 
   return (
     <>
       <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll mt-12">
@@ -58,7 +61,7 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
         />
           {categories.map((category) => (
             <Link
-              to={`/blogcontent/${category.name}`}
+              to={`/blogcontent/${category.id}`}
               key={category.id}
               variant="body2"
             >
