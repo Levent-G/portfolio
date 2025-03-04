@@ -19,7 +19,6 @@ const BlogCardComp = () => {
     const fetchBlogs = async () => {
       const blogList = await getBlogs();
       setBlogs(blogList.slice(0, 5));
-      console.log(blogList)
 
     };
 

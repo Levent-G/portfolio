@@ -7,7 +7,8 @@ import CustomButton from "../../components/button/CustomButton";
 import AddIcon from "@mui/icons-material/Add";
 import { db } from "../../firebase/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
   const { theme } = useTheme();
   const [categories, setCategories] = useState([]);
@@ -29,24 +30,25 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
 
         // Veriyi çekin
         const querySnapshot = await getDocs(q);
+     
         const categoriesData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setCategories(categoriesData);
       } catch (error) {
-        console.error("Kategorileri getirirken bir hata oluştu: ", error);
+        toast.error(`Kategorileri getirirken bir hata oluştu: ${error}`, { position: "top-right" });
       }
     };
 
     fetchCategories(isUserCategory && blogerName);
   }, [isUserCategory,blogerName]);
 
-
  
   return (
     <>
       <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll mt-12">
+      <ToastContainer />
         <CustomTypography
           variant="h5"
           fontWeight="bold"
@@ -61,7 +63,7 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
         />
           {categories.map((category) => (
             <Link
-              to={`/blogcontent/${category.id}`}
+              to={`/blogcontent/${category.blogId}`}
               key={category.id}
               variant="body2"
             >

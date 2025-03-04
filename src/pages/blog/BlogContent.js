@@ -13,7 +13,8 @@ import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import ModalDescription from "../../components/modal/ModalDescription";
 import ModalComp from "../../components/modal/ModalComp";
 import ReactQuill from "react-quill";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BlogContent = () => {
   const { theme } = useTheme();
   const [selectedItem, setSelectedItem] = useState([]);
@@ -40,7 +41,7 @@ const BlogContent = () => {
 
         setSelectedItem(blogData);
       } catch (error) {
-        console.error("Blog verilerini getirirken bir hata oluştu: ", error);
+        toast.error(`Blog verilerini getirirken bir hata oluştu:${error}`, { position: "top-right" });
       }
     };
 
@@ -49,6 +50,7 @@ const BlogContent = () => {
 
   return (
     <CustomPaper>
+          <ToastContainer />
       <Breadcrumbs links={breadcrumbLinks} />
       <Grid container spacing={1} mt={3}>
         <Grid item xs={12} md={8}>

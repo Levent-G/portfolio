@@ -4,11 +4,12 @@ import { TextField } from "@gib-ui/core";
 import { blogEkleFormSchema } from "./shared/BlogEkleFormSchema";
 import { useTheme } from "../../../context/ThemeContext";
 import { db } from "../../../firebase/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import BlogEditor from "../../../components/quill/BlogEditor"; // BlogEditor bileşenini içe aktar
 import { v4 as uuidv4 } from 'uuid'; // uuid kütüphanesini import et
 import { useNavigate } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BlogEkleForm = ({ blogerName }) => {
   const { theme } = useTheme();
   const [blogIcerik, setBlogIcerik] = useState("");
@@ -21,36 +22,39 @@ const BlogEkleForm = ({ blogerName }) => {
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
     const stars = 2.5;
-    const uniqueId = uuidv4(); // Benzersiz ID oluştur
-
+    const uniqueId = uuidv4(); 
+  
     const dataWithOthers = {
       ...data,
+      id: uniqueId, 
       blogTarihi: blogTarihi,
       yazarName: yazarName,
       stars: stars,
       blogIcerik: blogIcerik,
-      id: uniqueId, // Bloga benzersiz bir ID ekle
     };
-
+  
     try {
-      const docRef = await addDoc(collection(db, "blogs"), dataWithOthers);
-      console.log("Document written with ID: ", docRef.id);
-
+      // Firestore'da belirli bir ID ile belge oluştur ve ID'yi içeriğe ekle
+      await setDoc(doc(db, "blogs", uniqueId), dataWithOthers);
+  
       // Kategori tablosuna blog başlığını ekle
       await addDoc(collection(db, "categories"), {
         name: dataWithOthers.blogBaslik,
         user: blogerName,
         blogId: uniqueId, // Kategorinin blogID'sini ekle
       });
-      navigate("/blog")
-      console.log("Kategori eklendi: ", data.blogBaslik);
+  
+      navigate("/blog");
+      toast.success("Kategori eklendi.", { position: "top-right" });
     } catch (e) {
-      console.error("Error adding document: ", e);
+      toast.error(`Error adding document:${e} `, { position: "top-right" });
     }
   };
+  
  
   return (
     <Form onSubmit={blogEkle} onReset schema={blogEkleFormSchema}>
+          <ToastContainer />
       <TextField
         id="blogBaslik"
         name="blogBaslik"
