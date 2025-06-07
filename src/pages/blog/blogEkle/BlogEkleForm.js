@@ -3,7 +3,7 @@ import Form from "../../../components/form/Form";
 import { TextField } from "@gib-ui/core";
 import { blogEkleFormSchema } from "./shared/BlogEkleFormSchema";
 import { useTheme } from "../../../context/ThemeContext";
-import { db } from "../../../firebase/firebase";
+import { portfolioDb } from "../../../firebase/firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import BlogEditor from "../../../components/quill/BlogEditor"; // BlogEditor bileşenini içe aktar
 import { v4 as uuidv4 } from 'uuid'; // uuid kütüphanesini import et
@@ -35,10 +35,10 @@ const BlogEkleForm = ({ blogerName }) => {
   
     try {
       // Firestore'da belirli bir ID ile belge oluştur ve ID'yi içeriğe ekle
-      await setDoc(doc(db, "blogs", uniqueId), dataWithOthers);
+      await setDoc(doc(portfolioDb, "blogs", uniqueId), dataWithOthers);
   
       // Kategori tablosuna blog başlığını ekle
-      await addDoc(collection(db, "categories"), {
+      await addDoc(collection(portfolioDb, "categories"), {
         name: dataWithOthers.blogBaslik,
         user: blogerName,
         blogId: uniqueId, // Kategorinin blogID'sini ekle

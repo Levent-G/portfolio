@@ -13,7 +13,6 @@ const Homepage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simüle edilmiş bir yükleme işlemi
     setTimeout(() => {
       setLoading(false);
     }, 2000);

@@ -1,49 +1,126 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import header3 from "../../../assets/img/header3.png";
 import Grid from "@mui/material/Grid";
-import classNames from "classnames";
-import "animate.css";
 import CustomTypography from "../../../components/typography/CustomTypography";
 import CustomPaper from "../../../components/paper/CustomPaper";
 import CustomButton from "../../../components/button/CustomButton";
+import { doc, getDoc } from "firebase/firestore";
+import { adminDb } from "../../../firebase/firebase";
+import { useTheme } from "../../../context/ThemeContext";
 
 const Header = () => {
-  const isSmallScreen = window.innerWidth < 768;
+  const { theme } = useTheme();
+
+  const [title, setTitle] = useState("Loading...");
+  const [description, setDescription] = useState("Loading...");
+
+  useEffect(() => {
+    const fetchHeaderData = async () => {
+      try {
+        const headerDocRef = doc(
+          adminDb,
+          "pages",
+          "portfolio",
+          "fields",
+          "header"
+        );
+        const headerSnap = await getDoc(headerDocRef);
+
+        if (headerSnap.exists()) {
+          const data = headerSnap.data();
+          setTitle(data.title || "No Title");
+          setDescription(data.description || "No Description");
+        } else {
+          setTitle("No Title");
+          setDescription("No Description");
+        }
+      } catch (error) {
+        setTitle("Error loading title");
+        setDescription("Error loading description");
+      }
+    };
+
+    fetchHeaderData();
+  }, []);
 
   return (
-    <CustomPaper padding="2rem" bg="#333333" pt="8rem">
-      <Grid container spacing={2}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          className={classNames("animate__animated", "animate__fadeInLeft")}
-        >
+    <CustomPaper
+      padding="3rem"
+      bg={theme.backgroundColor || "#121212"}
+      sx={{ minHeight: "70vh", display: "flex", alignItems: "center" }}
+    >
+      <Grid
+        container
+        spacing={6}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Grid item xs={12} md={6}>
           <CustomTypography
-            variant="h5"
-            text=" HI I'M MUSTAFA LEVENT"
-            sx={{ color: "white" }}
+            variant="h4"  // h3 -> h4 küçültüldü
+            text={title}
+            sx={{
+              color: theme.primaryColor || "#00bcd4",
+              fontWeight: 600, // biraz daha hafif
+              fontFamily: "'Poppins', sans-serif",
+              mb: 2,
+              lineHeight: 1.4,
+              letterSpacing: "0.02em",
+            }}
           />
           <CustomTypography
-            variant="h7"
-            text=" I am currently actively working in GIB technology in addition to doing freelance work as a front-end developer. I graduated from Tokat Gaziosmanpaşa University, Computer Engineering Department."
-            mt={5}
-            sx={{ color: "#495e61" }}
+            variant="body2" // body1 -> body2 küçültüldü
+            text={description}
+            sx={{
+              color: theme.secondaryTextColor || "#bbb",
+              fontSize: "0.95rem", // biraz küçültüldü
+              mb: 3,
+              maxWidth: 600,
+              lineHeight: 1.6,
+              letterSpacing: "0.01em",
+            }}
           />
 
-          <CustomButton linkTo="/pdf" text="Show CV" />
+          <CustomButton
+            linkTo="/pdf"
+            text="Show CV"
+            sx={{
+              padding: "10px 28px",
+              fontSize: "0.9rem",
+              backgroundColor: theme.primaryColor || "#00bcd4",
+              color: "#fff",
+              fontWeight: 600,
+              borderRadius: "30px",
+              transition: "background-color 0.3s ease",
+              "&:hover": {
+                backgroundColor: theme.accentColor || "#0097a7",
+              },
+              textTransform: "none",
+              boxShadow: "none",
+            }}
+          />
         </Grid>
 
         <Grid
           item
-          xs={8}
-          md={6}
+          xs={12}
+          md={5}
           sx={{
-            display: isSmallScreen ? "none" : "block",
+            textAlign: "center",
+            display: { xs: "none", md: "block" },
           }}
-          className={classNames("animate__animated", "animate__fadeInRight")}
         >
-          <img src={header3} alt="" />
+          <img
+            src={header3}
+            alt="Header Visual"
+            style={{
+              width: "100%",
+              maxWidth: 500,
+              borderRadius: 20,
+              boxShadow: `0 3px 8px ${theme.primaryColor}66`,
+              objectFit: "cover",
+            }}
+          />
         </Grid>
       </Grid>
     </CustomPaper>

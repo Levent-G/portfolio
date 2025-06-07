@@ -5,7 +5,7 @@ import CustomTypography from "../../components/typography/CustomTypography";
 import { useTheme } from "../../context/ThemeContext";
 import CustomButton from "../../components/button/CustomButton";
 import AddIcon from "@mui/icons-material/Add";
-import { db } from "../../firebase/firebase";
+import { portfolioDb } from "../../firebase/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,11 +19,11 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
         let q;
         //tüm kategoriler
         if (blogerName === undefined) {
-          q = query(collection(db, "categories"));
+          q = query(collection(portfolioDb, "categories"));
         } //kullanıcıya özel kategoriler
         else {
           q = query(
-            collection(db, "categories"),
+            collection(portfolioDb, "categories"),
             where("user", "==", blogerName)
           );
         }

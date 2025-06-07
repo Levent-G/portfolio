@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CustomPaper from "../../components/paper/CustomPaper";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { useTheme } from "../../context/ThemeContext";
-import { db } from "../../firebase/firebase"; // Firestore yapılandırmasını içe aktar
+import { portfolioDb } from "../../firebase/firebase"; // Firestore yapılandırmasını içe aktar
 import { collection, query, where, getDocs } from "firebase/firestore"; // Firestore'dan veri çekmek için modüller
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -32,7 +32,7 @@ const BlogContent = () => {
 
     const fetchBlog = async () => {
       try {
-        const q = query(collection(db, "blogs"), where("id", "==", bloguuid)); // Firestore ID'si ile eşleşen belgeyi al
+        const q = query(collection(portfolioDb, "blogs"), where("id", "==", bloguuid)); // Firestore ID'si ile eşleşen belgeyi al
         const querySnapshot = await getDocs(q);
         const blogData = querySnapshot.docs.map((doc) => ({
           id: doc.id,

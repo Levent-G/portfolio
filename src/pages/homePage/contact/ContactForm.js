@@ -5,42 +5,76 @@ import TextField from "@mui/material/TextField";
 import CustomButton from "../../../components/button/CustomButton";
 
 import Map from "../../../components/map/Map";
+
 const ContactForm = () => {
   const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Email: ${email}\nSubject: ${subject}\nMessage: ${message}`);
   };
 
-  const redirectToEmail = () => {
-    window.location.href = `mailto:${email}`;
-  };
   return (
     <Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
-          <form>
+          <form onSubmit={handleSubmit} noValidate>
             <TextField
-              margin="normal"
+              label="Email"
               type="email"
-              id="email"
-              name="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
               required
-              label="Subject"
-              autoComplete="email"
               fullWidth
+              margin="dense"
+              size="small"
+              InputProps={{ style: { fontSize: 14, padding: '10px 12px' } }}
+              InputLabelProps={{ style: { fontSize: 14 } }}
+            />
+            <TextField
+              label="Subject"
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              fullWidth
+              margin="dense"
+              size="small"
+              InputProps={{ style: { fontSize: 14, padding: '10px 12px' } }}
+              InputLabelProps={{ style: { fontSize: 14 } }}
+            />
+            <TextField
+              label="Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              multiline
+              rows={4}
+              fullWidth
+              margin="dense"
+              size="small"
+              InputProps={{ style: { fontSize: 14, padding: '10px 12px' } }}
+              InputLabelProps={{ style: { fontSize: 14 } }}
             />
             <CustomButton
-              text="SEND MESSAGE"
-              onClick={redirectToEmail}
-              size="large"
-              sx={{ width: "100%" }}
+              type="submit"
+              text="Send Message"
+              size="medium"
+              sx={{ mt: 2, width: "100%", fontSize: 14, padding: "10px 0" }}
             />
           </form>
         </Grid>
-        <Grid item xs={12} md={6}>
+
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: 300,
+          }}
+        >
           <Map />
         </Grid>
       </Grid>
