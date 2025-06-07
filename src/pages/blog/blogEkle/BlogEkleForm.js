@@ -5,11 +5,12 @@ import { blogEkleFormSchema } from "./shared/BlogEkleFormSchema";
 import { useTheme } from "../../../context/ThemeContext";
 import { portfolioDb } from "../../../firebase/firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
-import BlogEditor from "../../../components/quill/BlogEditor"; // BlogEditor bileşenini içe aktar
-import { v4 as uuidv4 } from 'uuid'; // uuid kütüphanesini import et
+import BlogEditor from "../../../components/quill/BlogEditor";
+import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const BlogEkleForm = ({ blogerName }) => {
   const { theme } = useTheme();
   const [blogIcerik, setBlogIcerik] = useState("");
@@ -22,50 +23,57 @@ const BlogEkleForm = ({ blogerName }) => {
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
     const stars = 2.5;
-    const uniqueId = uuidv4(); 
-  
+    const uniqueId = uuidv4();
+
     const dataWithOthers = {
       ...data,
-      id: uniqueId, 
-      blogTarihi: blogTarihi,
-      yazarName: yazarName,
-      stars: stars,
-      blogIcerik: blogIcerik,
+      id: uniqueId,
+      blogTarihi,
+      yazarName,
+      stars,
+      blogIcerik,
     };
-  
+
     try {
-      // Firestore'da belirli bir ID ile belge oluştur ve ID'yi içeriğe ekle
       await setDoc(doc(portfolioDb, "blogs", uniqueId), dataWithOthers);
-  
-      // Kategori tablosuna blog başlığını ekle
+
       await addDoc(collection(portfolioDb, "categories"), {
         name: dataWithOthers.blogBaslik,
         user: blogerName,
-        blogId: uniqueId, // Kategorinin blogID'sini ekle
+        blogId: uniqueId,
       });
-  
+
       navigate("/blog");
       toast.success("Kategori eklendi.", { position: "top-right" });
     } catch (e) {
-      toast.error(`Error adding document:${e} `, { position: "top-right" });
+      toast.error(`Error adding document: ${e}`, { position: "top-right" });
     }
   };
-  
- 
+
+  const commonTextFieldSx = {
+    marginBottom: 2,
+    fontSize: "0.9rem",
+    "& .MuiFormLabel-root": {
+      fontSize: "0.9rem",
+    },
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: theme.primaryColor,
+      fontWeight: "600",
+    },
+    "& .MuiInputBase-input": {
+      fontSize: "0.9rem",
+    },
+  };
+
   return (
     <Form onSubmit={blogEkle} onReset schema={blogEkleFormSchema}>
-          <ToastContainer />
+      <ToastContainer />
       <TextField
         id="blogBaslik"
         name="blogBaslik"
         key="blogBaslik"
         labeltext="Blog Başlık"
-        sx={{
-          marginBottom: 3,
-          "& .MuiFormLabel-root.Mui-focused": {
-            color: theme.primaryColor,
-          },
-        }}
+        sx={commonTextFieldSx}
       />
 
       <TextField
@@ -73,12 +81,7 @@ const BlogEkleForm = ({ blogerName }) => {
         name="category"
         key="category"
         labeltext="Kategori"
-        sx={{
-          marginBottom: 3,
-          "& .MuiFormLabel-root.Mui-focused": {
-            color: theme.primaryColor,
-          },
-        }}
+        sx={commonTextFieldSx}
       />
 
       <BlogEditor
@@ -88,6 +91,7 @@ const BlogEkleForm = ({ blogerName }) => {
         value={blogIcerik}
         customOnChange={setBlogIcerik}
         label="Blog İçerik"
+        sx={{ marginBottom: 3, fontSize: "0.9rem" }}
       />
 
       <TextField
@@ -96,12 +100,18 @@ const BlogEkleForm = ({ blogerName }) => {
         key="codeExample"
         labeltext="Kod Örneği"
         multiline
-        rows={24}
+        rows={16}
         sx={{
-          marginTop: 3,
-          marginBottom: 3,
+          marginBottom: 2,
+          fontSize: "0.9rem",
+          "& .MuiFormLabel-root": { fontSize: "0.9rem" },
           "& .MuiFormLabel-root.Mui-focused": {
             color: theme.primaryColor,
+            fontWeight: "600",
+          },
+          "& .MuiInputBase-input": {
+            fontSize: "0.85rem",
+            fontFamily: "monospace",
           },
         }}
       />

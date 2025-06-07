@@ -9,78 +9,99 @@ import { portfolioDb } from "../../firebase/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
+
+const BlogCategory = ({ isUserCategory, setOpenModal, blogerName }) => {
   const { theme } = useTheme();
   const [categories, setCategories] = useState([]);
-  
+
   useEffect(() => {
     const fetchCategories = async (blogerName) => {
       try {
         let q;
-        //tüm kategoriler
         if (blogerName === undefined) {
           q = query(collection(portfolioDb, "categories"));
-        } //kullanıcıya özel kategoriler
-        else {
+        } else {
           q = query(
             collection(portfolioDb, "categories"),
             where("user", "==", blogerName)
           );
         }
 
-        // Veriyi çekin
         const querySnapshot = await getDocs(q);
-     
+
         const categoriesData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
         setCategories(categoriesData);
       } catch (error) {
-        toast.error(`Kategorileri getirirken bir hata oluştu: ${error}`, { position: "top-right" });
+        toast.error(`Kategorileri getirirken bir hata oluştu: ${error}`, {
+          position: "top-right",
+        });
       }
     };
 
     fetchCategories(isUserCategory && blogerName);
-  }, [isUserCategory,blogerName]);
+  }, [isUserCategory, blogerName]);
 
- 
   return (
     <>
-      <Box className="max-w-lg mx-auto px-5 ml-5 rounded shadow border-4 border-gray-200 p-5 h-[45rem] overflow-y-scroll mt-12">
-      <ToastContainer />
+      <Box
+        className="max-w-lg mx-auto px-5 ml-5 rounded shadow border border-gray-300 p-5 h-[45rem] overflow-y-scroll mt-12"
+        sx={{
+          scrollbarWidth: "thin",
+          scrollbarColor: `${theme.primaryColor} transparent`,
+          "&::-webkit-scrollbar": {
+            width: 6,
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: theme.primaryColor,
+            borderRadius: 3,
+          },
+          "&::-webkit-scrollbar-track": {
+            backgroundColor: "transparent",
+          },
+          backgroundColor: "background.paper",
+        }}
+      >
+        <ToastContainer />
         <CustomTypography
-          variant="h5"
-          fontWeight="bold"
+          variant="h6"
+          fontWeight="600"
           color={theme.primaryColor}
-          text={isUserCategory ?  `${blogerName}'s Blog`: "Kategoriler"} // login gelince düzeltilcek
+          text={isUserCategory ? `${blogerName}'s Blog` : "Kategoriler"}
+          sx={{ fontSize: 16, mb: 2 }}
         />
 
-        <List>
-        <CustomTypography
-          variant="h7"
-          text={categories.length ===0 && "Hiç Blogunuz Bulunamadı"} // login gelince düzeltilcek
-        />
+        <List sx={{ p: 0 }}>
+          <CustomTypography
+            variant="body2"
+            text={categories.length === 0 && "Hiç Blogunuz Bulunamadı"}
+            sx={{ fontSize: 13, color: "text.secondary", mb: 1 }}
+          />
           {categories.map((category) => (
             <Link
               to={`/blogcontent/${category.blogId}`}
               key={category.id}
-              variant="body2"
+              style={{ textDecoration: "none" }}
             >
               <ListItem
                 sx={{
-                  mb: 2,
-                  mt: 5,
-                  color: "gray",
+                  mb: 1.5,
+                  mt: 3,
+                  color: "text.secondary",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  borderRadius: 1.5,
+                  px: 2,
+                  py: 1,
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
                   "&:hover": {
                     backgroundColor: theme.primaryColor,
-                    color: "white",
+                    color: "#fff",
+                    boxShadow: `0 2px 10px ${theme.primaryColor}88`,
                   },
-                  pl: 2,
-                  p: 2,
-                  transition: "background-color 0.5s ease-in-out",
-                  borderRadius: "8px",
-                  cursor: "pointer",
                 }}
                 component="div"
               >
@@ -90,11 +111,12 @@ const BlogCategory = ({ isUserCategory, setOpenModal ,blogerName}) => {
           ))}
         </List>
       </Box>
+
       <CustomButton
-        variant={"outlined"}
+        variant="outlined"
         text={"BLOG EKLE"}
         icon={<AddIcon />}
-        sx={{ marginLeft: "0.5rem" ,marginBottom:"2rem"}}
+        sx={{ mt: 3, mb: 3, fontSize: 14 }}
         fullWidth
         onClick={() => setOpenModal(true)}
       />

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Rating, Box, Grid } from "@mui/material";
+import { Avatar, Rating, Box, Grid, Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
 import CustomPaper from "../../components/paper/CustomPaper";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { useTheme } from "../../context/ThemeContext";
-import { portfolioDb } from "../../firebase/firebase"; // Firestore yapılandırmasını içe aktar
-import { collection, query, where, getDocs } from "firebase/firestore"; // Firestore'dan veri çekmek için modüller
+import { portfolioDb } from "../../firebase/firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import BlogCategory from "../../components/category/BlogCategory";
@@ -15,6 +15,7 @@ import ModalComp from "../../components/modal/ModalComp";
 import ReactQuill from "react-quill";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const BlogContent = () => {
   const { theme } = useTheme();
   const [selectedItem, setSelectedItem] = useState([]);
@@ -25,14 +26,14 @@ const BlogContent = () => {
   const [blogerName, setBlogerName] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
-  const { bloguuid } = useParams(); // URL'den gelen ID
+  const { bloguuid } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     const fetchBlog = async () => {
       try {
-        const q = query(collection(portfolioDb, "blogs"), where("id", "==", bloguuid)); // Firestore ID'si ile eşleşen belgeyi al
+        const q = query(collection(portfolioDb, "blogs"), where("id", "==", bloguuid));
         const querySnapshot = await getDocs(q);
         const blogData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -41,7 +42,7 @@ const BlogContent = () => {
 
         setSelectedItem(blogData);
       } catch (error) {
-        toast.error(`Blog verilerini getirirken bir hata oluştu:${error}`, { position: "top-right" });
+        toast.error(`Blog verilerini getirirken bir hata oluştu: ${error}`, { position: "top-right" });
       }
     };
 
@@ -50,43 +51,50 @@ const BlogContent = () => {
 
   return (
     <CustomPaper>
-          <ToastContainer />
+      <ToastContainer />
       <Breadcrumbs links={breadcrumbLinks} />
-      <Grid container spacing={1} mt={3}>
+      <Grid container spacing={2} mt={3}>
         <Grid item xs={12} md={8}>
           {selectedItem.map((item, index) => (
             <React.Fragment key={index}>
               <CustomTypography
                 variant="h5"
-                mb={3}
+                mb={2}
                 text={item.blogBaslik}
-                sx={{ color: theme.primaryColor }}
+                sx={{ color: theme.primaryColor, fontWeight: 700, letterSpacing: "0.02em" }}
               />
 
-              <Avatar
-                alt="Author Avatar"
-                src="/static/images/avatar/1.jpg"
-                className="float-left mr-2"
-                sx={{ width: 30, height: 30 }}
-              />
-              <CustomTypography
-                variant="h7"
-                sx={{ color: "gray" }}
-                text={`${item.yazarName}, ${item.blogTarihi}`}
-              />
+              <Stack direction="row" alignItems="center" spacing={1} mb={2}>
+                <Avatar
+                  alt={item.yazarName}
+                  src="/static/images/avatar/1.jpg"
+                  sx={{ width: 28, height: 28 }}
+                />
+                <CustomTypography
+                  variant="body2"
+                  sx={{ color: "gray", fontWeight: 500 }}
+                  text={`${item.yazarName} · ${item.blogTarihi}`}
+                />
+                <Rating
+                  name="half-rating"
+                  value={item.stars}
+                  precision={0.5}
+                  size="small"
+                  readOnly
+                  sx={{ ml: 2 }}
+                />
+              </Stack>
 
-              <Rating name="half-rating" value={item.stars} precision={0.5} />
               <Box
                 sx={{
-                  borderRadius: 1,
-                  boxShadow: 3,
-                  border: 4,
-                  borderColor: "grey.100",
-                  mt: 5,
-                  lineHeight: "2.5rem",
-                  fontSize: "1.25rem",
-                  bgcolor: "grey.100",
-                  marginBottom: "5rem",
+                  borderRadius: 2,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                  bgcolor: "background.paper",
+                  p: 3,
+                  mb: 6,
+                  fontSize: "1rem",
+                  lineHeight: 1.6,
+                  color: "text.primary",
                 }}
               >
                 <ReactQuill
@@ -94,23 +102,21 @@ const BlogContent = () => {
                   readOnly
                   theme="snow"
                   modules={{ toolbar: false }}
-                  className="h-full"
-                  
+                  style={{ minHeight: "220px" }}
                 />
               </Box>
 
-              {item.codeExample !== "" ? (
+              {item.codeExample && item.codeExample.trim() !== "" && (
                 <>
-                  <CustomTypography variant="h7" text="EXAMPLE" />
-                  <SyntaxHighlighter
-                    language="javascript"
-                    style={solarizedlight}
-                  >
+                  <CustomTypography
+                    variant="subtitle2"
+                    text="Örnek Kod"
+                    sx={{ mb: 1, fontWeight: 600, color: theme.primaryColor }}
+                  />
+                  <SyntaxHighlighter language="javascript" style={solarizedlight} customStyle={{ borderRadius: 8, padding: "16px", fontSize: "0.85rem" }}>
                     {item.codeExample}
                   </SyntaxHighlighter>
                 </>
-              ) : (
-                ""
               )}
             </React.Fragment>
           ))}
@@ -121,17 +127,11 @@ const BlogContent = () => {
           {openModal && (
             <ModalComp
               open={openModal}
-              closeModal={() => {
-                setOpenModal(false);
-              }}
-              modalTitle={"BLOG'U KİM YAZIYOR ?"}
-              modalDescription={
-                <ModalDescription setBlogerName={setBlogerName} />
-              }
-              confirmLabel={" Onaylıyorum"}
-              confirmModal={() => {
-                setOpenModal(false);
-              }}
+              closeModal={() => setOpenModal(false)}
+              modalTitle={"BLOG'U KİM YAZIYOR?"}
+              modalDescription={<ModalDescription setBlogerName={setBlogerName} />}
+              confirmLabel={"Onaylıyorum"}
+              confirmModal={() => setOpenModal(false)}
               linkTo={`/blogEkle/${blogerName}`}
             />
           )}

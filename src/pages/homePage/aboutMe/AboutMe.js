@@ -83,7 +83,6 @@ const AboutMe = () => {
       style={{
         background: bgGradient,
         padding: "3rem 6%",
-        minHeight: "70vh",
         width: "100%",
         boxSizing: "border-box",
       }}

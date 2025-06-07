@@ -47,7 +47,7 @@ const Header = () => {
     <CustomPaper
       padding="3rem"
       bg={theme.backgroundColor || "#121212"}
-      sx={{ minHeight: "70vh", display: "flex", alignItems: "center" }}
+      sx={{ minHeight: "60vh", display: "flex", alignItems: "center" }}
     >
       <Grid
         container
