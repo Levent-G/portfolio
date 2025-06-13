@@ -19,6 +19,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blogcontent/:bloguuid" element={<BlogContent />} />
+            <Route path="/category/:categoryName" element={<BlogContent />} />
             <Route path="/pdf" element={<PdfPages />} />
             <Route path="/blogekle/:blogerName" element={<BlogEkleMain />} />
           </Routes>

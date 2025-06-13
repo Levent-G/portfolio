@@ -3,13 +3,13 @@ import Form from "../../../components/form/Form";
 import { TextField } from "@gib-ui/core";
 import { blogEkleFormSchema } from "./shared/BlogEkleFormSchema";
 import { useTheme } from "../../../context/ThemeContext";
-import { portfolioDb } from "../../../firebase/firebase";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { adminDb } from "../../../firebase/firebase";
+import { setDoc, doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import BlogEditor from "../../../components/quill/BlogEditor";
-import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { v4 as uuidv4 } from "uuid";
 
 const BlogEkleForm = ({ blogerName }) => {
   const { theme } = useTheme();
@@ -17,17 +17,16 @@ const BlogEkleForm = ({ blogerName }) => {
   const navigate = useNavigate();
 
   const blogEkle = async (data) => {
-    const yazarName = "Levent";
+    const yazarName = blogerName || "Levent";
     const today = new Date();
     const blogTarihi = `${today.getFullYear()}-${(today.getMonth() + 1)
       .toString()
       .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
     const stars = 2.5;
-    const uniqueId = uuidv4();
 
-    const dataWithOthers = {
+    const newBlog = {
+      id: uuidv4(), // <<< benzersiz ID burada
       ...data,
-      id: uniqueId,
       blogTarihi,
       yazarName,
       stars,
@@ -35,18 +34,27 @@ const BlogEkleForm = ({ blogerName }) => {
     };
 
     try {
-      await setDoc(doc(portfolioDb, "blogs", uniqueId), dataWithOthers);
+      const blogsDocRef = doc(adminDb, "pages", "portfolio", "fields", "blogs");
 
-      await addDoc(collection(portfolioDb, "categories"), {
-        name: dataWithOthers.blogBaslik,
-        user: blogerName,
-        blogId: uniqueId,
-      });
+      // Belge var mı kontrol et
+      const blogsDocSnap = await getDoc(blogsDocRef);
+
+      if (blogsDocSnap.exists()) {
+        // varsa bloglar dizisine ekle
+        await updateDoc(blogsDocRef, {
+          bloglar: arrayUnion(newBlog),
+        });
+      } else {
+        // yoksa yeni diziyle oluştur
+        await setDoc(blogsDocRef, {
+          bloglar: [newBlog],
+        });
+      }
 
       navigate("/blog");
-      toast.success("Kategori eklendi.", { position: "top-right" });
+      toast.success("Blog başarıyla eklendi.", { position: "top-right" });
     } catch (e) {
-      toast.error(`Error adding document: ${e}`, { position: "top-right" });
+      toast.error(`Error adding blog: ${e}`, { position: "top-right" });
     }
   };
 

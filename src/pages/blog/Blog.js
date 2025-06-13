@@ -7,7 +7,7 @@ import BlogCategory from "../../components/category/BlogCategory";
 import Breadcrumbs from "../../components/breadCrumbs/Breadcrumbs";
 import ModalComp from "../../components/modal/ModalComp";
 import ModalDescription from "../../components/modal/ModalDescription";
-import CustomTypography from "../../components/typography/CustomTypography"; // ekledim
+import CustomTypography from "../../components/typography/CustomTypography";
 
 const Blog = () => {
   const [loading, setLoading] = useState(true);
@@ -23,46 +23,54 @@ const Blog = () => {
   if (loading) return <LoadingPage />;
 
   return (
-    <CustomPaper
-      sx={{
-        p: 2,
-        maxWidth: 1200,
-        margin: "auto",
-        bgcolor: "background.paper",
-      }}
-    >
+    <CustomPaper>
       <Breadcrumbs links={breadcrumbLinks} />
 
-      <Box padding="1rem 0">
-        <Grid container spacing={2}>
+      <Box paddingY={4}>
+        <Grid container spacing={4}>
+          {/* Sol tarafta Blog Kartları */}
           <Grid item xs={12} md={8}>
-            {/* Blog başlık örneği, daha küçük ve minimalist */}
-            <CustomTypography
-              variant="h6"
-              sx={{
-                fontWeight: 600,
-                mb: 1.5,
-                color: "text.primary",
-                letterSpacing: 0.5,
-              }}
-            />
-            <BlogCardComp />
+            <Box>
+              <CustomTypography
+                variant="h5"
+                sx={{
+                  fontWeight: 700,
+                  mb: 2,
+                  color: "text.primary",
+                  letterSpacing: 0.5,
+                }}
+              >
+                Blog Yazıları
+              </CustomTypography>
+              <BlogCardComp />
+            </Box>
           </Grid>
 
-          <Grid item xs={12} md={4}>
-            {/* Blog kategori başlığı */}
+          {/* Sağ tarafta Kategoriler */}
+          <Grid
+            item
+            xs={12}
+            md={4}
+            sx={{
+              position: "sticky",
+              top: 100, // sayfa kayarken sağ taraf sabit kalabilir
+              alignSelf: "flex-start", // yukarıda hizalanması için
+            }}
+          >
             <CustomTypography
               variant="subtitle1"
               sx={{
-                fontWeight: 500,
-                mb: 1,
+                fontWeight: 600,
+                mb: 2,
                 color: "text.secondary",
-                letterSpacing: 0.3,
-                textTransform: "uppercase",
+                letterSpacing: 0.5,
               }}
-            />
+            >
+              Kategoriler
+            </CustomTypography>
+
             <BlogCategory setOpenModal={setOpenModal} />
-            
+
             {openModal && (
               <ModalComp
                 open={openModal}
@@ -70,7 +78,9 @@ const Blog = () => {
                   if (event !== "backdropClick") setOpenModal(false);
                 }}
                 modalTitle={"BLOG'U KİM YAZIYOR?"}
-                modalDescription={<ModalDescription setBlogerName={setBlogerName} />}
+                modalDescription={
+                  <ModalDescription setBlogerName={setBlogerName} />
+                }
                 confirmLabel={"Onaylıyorum"}
                 confirmModal={() => setOpenModal(false)}
                 linkTo={`/blogEkle/${blogerName}`}

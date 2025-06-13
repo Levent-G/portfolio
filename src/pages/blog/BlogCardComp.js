@@ -1,81 +1,56 @@
 import React, { useEffect, useState } from "react";
-import {
-  Rating,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Box, Card, CardContent, CardActions, Typography, Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 import CustomTypography from "../../components/typography/CustomTypography";
 import { getBlogs } from "../../services/GetBlogs";
+import { useTheme } from "../../context/ThemeContext";
 
 const BlogCardComp = () => {
+  const { theme } = useTheme();
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      const blogList = await getBlogs();
-      setBlogs(blogList.slice(0, 5));
-    };
-
-    fetchBlogs();
+    getBlogs()
+      .then((list) => setBlogs(list.slice(0, 5)))
+      .catch(() => setBlogs([]));
   }, []);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 3,
-        p: 2,
-      }}
-    >
-      {blogs.map((item) => (
+    <Box display="flex" flexDirection="column" gap={2}>
+      {blogs.map(({ id, blogBaslik, blogIcerik, yazarName, stars, blogTarihi }) => (
         <Link
-          to={`/blogcontent/${item.id}`}
-          key={item.id}
+          to={`/blogcontent/${id}`}
+          key={id}
           style={{ textDecoration: "none" }}
         >
           <Card
+            elevation={1}
             sx={{
               borderRadius: 2,
-              boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-              transition: "transform 0.25s ease, box-shadow 0.25s ease",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
               "&:hover": {
-                transform: "scale(1.04)",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                transform: "scale(1.03)",
+                boxShadow: `0 10px 30px ${theme.primaryColor}33`,
               },
-              overflow: "hidden",
-              bgcolor: "background.paper",
+              bgcolor: theme.backgroundPaper || "#fff",
             }}
-            elevation={0}
           >
-            {/* Başlık bölümü */}
             <Box
               sx={{
-                height: 120,
-                backgroundColor: "primary.light",
-                color: "primary.main",
-                fontWeight: 700,
-                fontSize: 20,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                px: 3,
+                bgcolor: theme.primaryLight || "#e0f7fa",
+                color: theme.primaryColor,
+                fontWeight: "700",
+                fontSize: { xs: 16, sm: 18 },
+                p: 2,
                 textAlign: "center",
-                lineHeight: 1.1,
-                letterSpacing: "0.03em",
-                userSelect: "none",
                 textTransform: "capitalize",
+                userSelect: "none",
               }}
             >
-              {item.blogBaslik}
+              {blogBaslik}
             </Box>
 
-            {/* İçerik */}
-            <CardContent sx={{ p: 3 }}>
+            <CardContent sx={{ p: 2 }}>
               <Typography
                 variant="body2"
                 color="text.secondary"
@@ -85,54 +60,33 @@ const BlogCardComp = () => {
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
                   fontSize: 14,
-                  lineHeight: 1.5,
+                  lineHeight: 1.4,
                 }}
               >
-                <div
-                  dangerouslySetInnerHTML={{ __html: item.blogIcerik }}
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                    color: "inherit",
-                    userSelect: "text",
-                  }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: blogIcerik }} />
               </Typography>
             </CardContent>
 
-            {/* Footer */}
             <CardActions
               sx={{
-                px: 3,
-                pb: 2,
+                px: 2,
                 pt: 0,
+                pb: 1.5,
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                color: theme.textSecondary,
+                fontSize: 12,
               }}
             >
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <CustomTypography
-                  size="small"
-                  color="text.secondary"
-                  text={item.yazarName}
-                  sx={{ fontSize: 13, fontWeight: 500 }}
-                />
-                <Rating
-                  name="half-rating"
-                  value={item.stars}
-                  precision={0.5}
-                  size="small"
-                  readOnly
-                />
+              <Box display="flex" alignItems="center" gap={1}>
+                <CustomTypography size="small" text={yazarName} />
+                <Rating name="read-only" value={stars} precision={0.5} size="small" readOnly />
               </Box>
 
-              <CustomTypography
-                variant="body2"
-                color="text.secondary"
-                text={item.blogTarihi}
-                sx={{ fontSize: 12, opacity: 0.65, fontWeight: 400 }}
-              />
+              <Typography variant="caption" color="text.secondary" sx={{ opacity: 0.7 }}>
+                {blogTarihi}
+              </Typography>
             </CardActions>
           </Card>
         </Link>
