@@ -209,7 +209,7 @@ export default function TeamSelectionStep() {
           <FootballerSVG
             active={animatingCaptain === "black"}
             direction="left"
-            color="white"
+            color="black"
           />
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
