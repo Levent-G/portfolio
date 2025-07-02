@@ -147,7 +147,7 @@ export default function TeamSelectionStep() {
         gutterBottom
         sx={{ fontWeight: "bold" }}
       >
-        7'ye 7 Takım Oluşturma
+        GIB HALISAHA
       </Typography>
 
       <Typography
