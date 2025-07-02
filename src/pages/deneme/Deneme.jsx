@@ -258,7 +258,12 @@ export default function TeamSelectionStep() {
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
             textAlign="center"
-            sx={{ mt: 1, maxWidth: 110, wordWrap: "break-word",color:"white" }}
+            sx={{
+              mt: 1,
+              maxWidth: 110,
+              wordWrap: "break-word",
+              color: "white",
+            }}
           >
             {captainWhite.name}
           </Typography>
@@ -313,16 +318,24 @@ export default function TeamSelectionStep() {
                       }}
                       elevation={3}
                     >
-                      <img
-                        src={player.avatar}
-                        alt={player.name}
-                        style={{
+                      <Box
+                        sx={{
                           width: isXs ? 32 : 40,
                           height: isXs ? 32 : 40,
                           borderRadius: "50%",
-                          marginRight: 12,
+                          backgroundColor: "#1976d2",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
+                          fontSize: isXs ? 16 : 20,
+                          mr: 1.5,
+                          userSelect: "none",
                         }}
-                      />
+                      >
+                        {player.name.charAt(0).toUpperCase()}
+                      </Box>
                       <Typography variant={isXs ? "body2" : "body1"}>
                         {player.name}
                       </Typography>
@@ -383,30 +396,34 @@ export default function TeamSelectionStep() {
                       layout
                     >
                       <Card
-                        onClick={() => selectPlayer(player)}
                         sx={{
-                          cursor: animating ? "not-allowed" : "pointer",
                           display: "flex",
                           alignItems: "center",
                           p: 1,
                           mb: 1,
-                          "&:hover": {
-                            bgcolor: "#e3f2fd",
-                            boxShadow: 6,
-                          },
+                          bgcolor: "white",
+                          color: "black",
                         }}
                         elevation={3}
                       >
-                        <img
-                          src={player.avatar}
-                          alt={player.name}
-                          style={{
+                        <Box
+                          sx={{
                             width: isXs ? 32 : 40,
                             height: isXs ? 32 : 40,
                             borderRadius: "50%",
-                            marginRight: 12,
+                            backgroundColor: "#1976d2",
+                            color: "white",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontWeight: "bold",
+                            fontSize: isXs ? 16 : 20,
+                            mr: 1.5,
+                            userSelect: "none",
                           }}
-                        />
+                        >
+                          {player.name.charAt(0).toUpperCase()}
+                        </Box>
                         <Typography variant={isXs ? "body2" : "body1"}>
                           {player.name}
                         </Typography>
@@ -460,19 +477,29 @@ export default function TeamSelectionStep() {
                         alignItems: "center",
                         p: 1,
                         mb: 1,
+                        bgcolor: "#333",
+                        color: "white",
                       }}
                       elevation={3}
                     >
-                      <img
-                        src={player.avatar}
-                        alt={player.name}
-                        style={{
+                      <Box
+                        sx={{
                           width: isXs ? 32 : 40,
                           height: isXs ? 32 : 40,
                           borderRadius: "50%",
-                          marginRight: 12,
+                          backgroundColor: "#1976d2",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontWeight: "bold",
+                          fontSize: isXs ? 16 : 20,
+                          mr: 1.5,
+                          userSelect: "none",
                         }}
-                      />
+                      >
+                        {player.name.charAt(0).toUpperCase()}
+                      </Box>
                       <Typography variant={isXs ? "body2" : "body1"}>
                         {player.name}
                       </Typography>
