@@ -8,6 +8,7 @@ import {
   Stack,
   useTheme,
   useMediaQuery,
+  Avatar,
 } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import FootballerSVG from "./FootballerSVG";
@@ -37,6 +38,14 @@ const playerVariants = {
   visible: { opacity: 1, scale: 1, y: 0 },
   exit: { opacity: 0, scale: 0.7, y: -20 },
 };
+
+function getInitials(name) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+}
 
 export default function TeamSelectionStep() {
   const [playersPool, setPlayersPool] = useState([]);
@@ -211,12 +220,13 @@ export default function TeamSelectionStep() {
             direction="left"
             color="black"
           />
+          
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
             textAlign="center"
             sx={{ mt: 1, maxWidth: 110, wordWrap: "break-word" }}
           >
-            {captainBlack.name}
+            {captainBlack.name.toUpperCase()}
           </Typography>
         </motion.div>
 
@@ -255,17 +265,13 @@ export default function TeamSelectionStep() {
             direction="right"
             color="white"
           />
+          
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
             textAlign="center"
-            sx={{
-              mt: 1,
-              maxWidth: 110,
-              wordWrap: "break-word",
-              color: "white",
-            }}
+            sx={{ mt: 1, maxWidth: 110, wordWrap: "break-word", color: "white" }}
           >
-            {captainWhite.name}
+            {captainWhite.name.toUpperCase()}
           </Typography>
         </motion.div>
       </Box>
@@ -318,26 +324,20 @@ export default function TeamSelectionStep() {
                       }}
                       elevation={3}
                     >
-                      <Box
+                      <Avatar
                         sx={{
                           width: isXs ? 32 : 40,
                           height: isXs ? 32 : 40,
-                          borderRadius: "50%",
-                          backgroundColor: "#1976d2",
+                          bgcolor: "grey.900",
                           color: "white",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          marginRight: 1.5,
                           fontWeight: "bold",
-                          fontSize: isXs ? 16 : 20,
-                          mr: 1.5,
-                          userSelect: "none",
                         }}
                       >
-                        {player.name.charAt(0).toUpperCase()}
-                      </Box>
+                        {getInitials(player.name)}
+                      </Avatar>
                       <Typography variant={isXs ? "body2" : "body1"}>
-                        {player.name}
+                        {player.name.toUpperCase()}
                       </Typography>
                     </Card>
                   </motion.div>
@@ -396,36 +396,34 @@ export default function TeamSelectionStep() {
                       layout
                     >
                       <Card
+                        onClick={() => selectPlayer(player)}
                         sx={{
+                          cursor: animating ? "not-allowed" : "pointer",
                           display: "flex",
                           alignItems: "center",
                           p: 1,
                           mb: 1,
-                          bgcolor: "white",
-                          color: "black",
+                          "&:hover": {
+                            bgcolor: "#e3f2fd",
+                            boxShadow: 6,
+                          },
                         }}
                         elevation={3}
                       >
-                        <Box
+                        <Avatar
                           sx={{
                             width: isXs ? 32 : 40,
                             height: isXs ? 32 : 40,
-                            borderRadius: "50%",
-                            backgroundColor: "#1976d2",
+                            bgcolor: "primary.main",
                             color: "white",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
+                            marginRight: 1.5,
                             fontWeight: "bold",
-                            fontSize: isXs ? 16 : 20,
-                            mr: 1.5,
-                            userSelect: "none",
                           }}
                         >
-                          {player.name.charAt(0).toUpperCase()}
-                        </Box>
+                          {getInitials(player.name)}
+                        </Avatar>
                         <Typography variant={isXs ? "body2" : "body1"}>
-                          {player.name}
+                          {player.name.toUpperCase()}
                         </Typography>
                       </Card>
                     </motion.div>
@@ -477,31 +475,23 @@ export default function TeamSelectionStep() {
                         alignItems: "center",
                         p: 1,
                         mb: 1,
-                        bgcolor: "#333",
-                        color: "white",
                       }}
                       elevation={3}
                     >
-                      <Box
+                      <Avatar
                         sx={{
                           width: isXs ? 32 : 40,
                           height: isXs ? 32 : 40,
-                          borderRadius: "50%",
-                          backgroundColor: "#1976d2",
-                          color: "white",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          bgcolor: "grey.300",
+                          color: "black",
+                          marginRight: 1.5,
                           fontWeight: "bold",
-                          fontSize: isXs ? 16 : 20,
-                          mr: 1.5,
-                          userSelect: "none",
                         }}
                       >
-                        {player.name.charAt(0).toUpperCase()}
-                      </Box>
+                        {getInitials(player.name)}
+                      </Avatar>
                       <Typography variant={isXs ? "body2" : "body1"}>
-                        {player.name}
+                        {player.name.toUpperCase()}
                       </Typography>
                     </Card>
                   </motion.div>
