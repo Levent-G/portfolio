@@ -170,10 +170,10 @@ export default function TeamSelectionStep() {
           height: isXs ? 240 : 320,
           background: `linear-gradient(
             to right,
-            #f5f5f5 0%,         /* beyaz takımı için açık renk */
-            #e0e0e0 50%,        /* orta açık gri */
-            #212121 50%,        /* siyah takımı için siyah */
-            #424242 100%        /* koyu gri */
+            #f5f5f5 0%,
+            #e0e0e0 50%,
+            #212121 50%,
+            #424242 100%
           )`,
           borderRadius: 3,
           overflow: "hidden",
@@ -220,7 +220,7 @@ export default function TeamSelectionStep() {
             direction="left"
             color="black"
           />
-          
+
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
             textAlign="center"
@@ -265,7 +265,7 @@ export default function TeamSelectionStep() {
             direction="right"
             color="white"
           />
-          
+
           <Typography
             variant={isXs ? "subtitle2" : "subtitle1"}
             textAlign="center"
@@ -304,44 +304,75 @@ export default function TeamSelectionStep() {
             </Typography>
             <Stack spacing={1} width="100%">
               <AnimatePresence>
-                {blackTeam.map((player) => (
-                  <motion.div
-                    key={player.id}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={playerVariants}
-                    layout
-                  >
-                    <Card
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        p: 1,
-                        mb: 1,
-                        bgcolor: "#333",
-                        color: "white",
-                      }}
-                      elevation={3}
+                {blackTeam.map((player, i) => {
+                  const isCaptain = i === 0;
+                  return (
+                    <motion.div
+                      key={player.id}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={playerVariants}
+                      layout
                     >
-                      <Avatar
+                      <Card
                         sx={{
-                          width: isXs ? 32 : 40,
-                          height: isXs ? 32 : 40,
-                          bgcolor: "grey.900",
+                          display: "flex",
+                          alignItems: "center",
+                          p: 1,
+                          mb: 1,
+                          bgcolor: "#333",
                           color: "white",
-                          marginRight: 1.5,
-                          fontWeight: "bold",
+                          justifyContent: "space-between",
                         }}
+                        elevation={3}
                       >
-                        {getInitials(player.name)}
-                      </Avatar>
-                      <Typography variant={isXs ? "body2" : "body1"}>
-                        {player.name.toUpperCase()}
-                      </Typography>
-                    </Card>
-                  </motion.div>
-                ))}
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                          }}
+                        >
+                          <Avatar
+                            sx={{
+                              width: isXs ? 32 : 40,
+                              height: isXs ? 32 : 40,
+                              bgcolor: "grey.900",
+                              color: "white",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {getInitials(player.name)}
+                          </Avatar>
+                          <Typography variant={isXs ? "body2" : "body1"}>
+                            {player.name.toUpperCase()}
+                          </Typography>
+                        </Box>
+                        {isCaptain && (
+                          <Box
+                            sx={{
+                              bgcolor: "black",
+                              color: "white",
+                              fontWeight: "bold",
+                              borderRadius: "50%",
+                              width: 24,
+                              height: 24,
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              fontSize: 14,
+                              userSelect: "none",
+                            }}
+                            title="Kaptan"
+                          >
+                            K
+                          </Box>
+                        )}
+                      </Card>
+                    </motion.div>
+                  );
+                })}
               </AnimatePresence>
             </Stack>
           </Paper>
@@ -460,42 +491,73 @@ export default function TeamSelectionStep() {
             </Typography>
             <Stack spacing={1} width="100%">
               <AnimatePresence>
-                {whiteTeam.map((player) => (
-                  <motion.div
-                    key={player.id}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    variants={playerVariants}
-                    layout
-                  >
-                    <Card
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        p: 1,
-                        mb: 1,
-                      }}
-                      elevation={3}
+                {whiteTeam.map((player, i) => {
+                  const isCaptain = i === 0;
+                  return (
+                    <motion.div
+                      key={player.id}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      variants={playerVariants}
+                      layout
                     >
-                      <Avatar
+                      <Card
                         sx={{
-                          width: isXs ? 32 : 40,
-                          height: isXs ? 32 : 40,
-                          bgcolor: "grey.300",
-                          color: "black",
-                          marginRight: 1.5,
-                          fontWeight: "bold",
+                          display: "flex",
+                          alignItems: "center",
+                          p: 1,
+                          mb: 1,
+                          justifyContent: "space-between",
                         }}
+                        elevation={3}
                       >
-                        {getInitials(player.name)}
-                      </Avatar>
-                      <Typography variant={isXs ? "body2" : "body1"}>
-                        {player.name.toUpperCase()}
-                      </Typography>
-                    </Card>
-                  </motion.div>
-                ))}
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                          }}
+                        >
+                          <Avatar
+                            sx={{
+                              width: isXs ? 32 : 40,
+                              height: isXs ? 32 : 40,
+                              bgcolor: "grey.300",
+                              color: "black",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {getInitials(player.name)}
+                          </Avatar>
+                          <Typography variant={isXs ? "body2" : "body1"}>
+                            {player.name.toUpperCase()}
+                          </Typography>
+                        </Box>
+                        {isCaptain && (
+                          <Box
+                            sx={{
+                              bgcolor: "black",
+                              color: "white",
+                              fontWeight: "bold",
+                              borderRadius: "50%",
+                              width: 24,
+                              height: 24,
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              fontSize: 14,
+                              userSelect: "none",
+                            }}
+                            title="Kaptan"
+                          >
+                            K
+                          </Box>
+                        )}
+                      </Card>
+                    </motion.div>
+                  );
+                })}
               </AnimatePresence>
             </Stack>
           </Paper>
